@@ -13,7 +13,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Educagrif",
+  title: "Educagriff",
   description: "Votre éducateur comportementaliste canin et félin sur Bordeaux métropole.",
 };
 
