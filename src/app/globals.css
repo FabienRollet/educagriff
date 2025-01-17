@@ -5,17 +5,27 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --dark_background: #0a0a0a;
+  --dark_foreground: #ededed;
 }
 
 body {
   color: var(--foreground);
   background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-gelasio-sans), Arial, Helvetica, sans-serif;
+}
+
+html.dark body {
+  background-color: var(--dark_background);
+  color: var(--dark_foreground);
+}
+
+.border-light {
+  @apply border;
+  border-color: var(--foreground);
+}
+
+.border-dark {
+  @apply border;
+  border-color: var(--dark_foreground);
 }
