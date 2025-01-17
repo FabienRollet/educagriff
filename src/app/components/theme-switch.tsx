@@ -3,7 +3,9 @@
 import { VisuallyHidden, useSwitch } from "@heroui/react";
 import { useTheme } from "next-themes";
 
-export const MoonIcon = (props) => {
+import { SVGProps } from "react";
+
+export const MoonIcon = (props: SVGProps<SVGSVGElement>) => {
   return (
     <svg
       aria-hidden="true"
@@ -22,7 +24,7 @@ export const MoonIcon = (props) => {
   );
 };
 
-export const SunIcon = (props) => {
+export const SunIcon = (props: SVGProps<SVGSVGElement>) => {
   return (
     <svg
       aria-hidden="true"
@@ -41,7 +43,9 @@ export const SunIcon = (props) => {
   );
 };
 
-const ThemeSwitch = (props) => {
+import { SwitchProps } from "@heroui/react";
+
+const ThemeSwitch = (props: SwitchProps) => {
   const { theme, setTheme } = useTheme();
   const { Component, slots, isSelected, getBaseProps, getInputProps, getWrapperProps } = useSwitch({
     ...props,
