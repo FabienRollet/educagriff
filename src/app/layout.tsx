@@ -24,7 +24,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={gelasio.variable}>
-        <ThemeProvider attribute="class" defaultTheme="system" enableSystem={true}>
+        <ThemeProvider attribute="class" defaultTheme="light" enableSystem={true}>
           <Navbar />
           {children}
           <Footer />
