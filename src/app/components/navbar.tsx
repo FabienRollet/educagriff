@@ -34,6 +34,7 @@ export default function Menubar() {
           className="sm:hidden"
         />
         <NavbarBrand>
+        <Link className="flex" color="foreground" href="/">
           <Image
             src="/logo.png"
             alt="Logo"
@@ -44,6 +45,7 @@ export default function Menubar() {
           <p className="font-bold text-inherit md:hidden lg:block">
             Educagriff
           </p>
+          </Link>
         </NavbarBrand>
       </NavbarContent>
 
