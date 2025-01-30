@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import { useTheme } from "next-themes";
 import {
@@ -16,7 +16,16 @@ import ThemeSwitch from "./theme-switch";
 
 export default function Menubar() {
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
-  const { theme } = useTheme();
+  const { resolvedTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  if (!mounted) {
+    return null; // Render nothing on the server
+  }
 
   const menuItems = [
     { text: "Accueil", href: "/" },
@@ -80,7 +89,7 @@ export default function Menubar() {
       <NavbarContent justify="end">
         <NavbarItem isActive>
           <Link
-            className={`p-2 border-4 rounded-full hover:bg-default-200 ${theme === 'light' ? 'border-light' : 'border-dark'}`}
+            className={`p-2 border-4 rounded-full hover:bg-default-200 ${resolvedTheme === 'light' ? 'border-light' : 'border-dark'}`}
             href="tel:0651271749"
           >
             06 51 27 17 49
