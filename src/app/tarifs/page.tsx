@@ -21,7 +21,7 @@ export default function Tarifs() {
   }
 
   return (
-    <main className="flex flex-col items-center h-screen">
+    <main className="flex flex-col items-center min-h-screen">
       <h1 className="w-full m-16 text-xl font-bold text-center mb-8">
         Choisissez votre animal :
       </h1>
@@ -36,7 +36,7 @@ export default function Tarifs() {
         >
           <Button
             onClick={() => setSelected("chat")}
-            className={`flex items-center justify-center w-44 h-44 rounded-full border-4 ${
+            className={`flex items-center justify-center w-40 h-40 rounded-full border-4 ${
               theme === "light" ? "border-light" : "border-dark"
             }`}
           >
@@ -55,6 +55,7 @@ export default function Tarifs() {
         </motion.article>
         <motion.article 
           className="flex flex-col items-center"
+          initial={{x: 1}}
           animate={{ 
             scale: selected === "chien" ? 1.2 : 1, 
             x: selected === "chat" ? 100 : 0 
@@ -63,7 +64,7 @@ export default function Tarifs() {
         >
           <Button
             onClick={() => setSelected("chien")}
-            className={`flex items-center justify-center w-44 h-44 rounded-full border-4 ${
+            className={`flex items-center justify-center w-40 h-40 rounded-full border-4 ${
               theme === "light" ? "border-light" : "border-dark"
             }`}
           >
