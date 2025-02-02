@@ -29,8 +29,8 @@ export default function Tarifs() {
         <motion.article 
           className="flex flex-col items-center"
           animate={{ 
-            scale: selected === "chat" ? 1.2 : 1, 
-            x: selected === "chien" ? -100 : 0 
+            scale: selected === "chat" ? 1.2 : 0.8, 
+            x: selected === "chien" ? -100 : 10 
           }}
           transition={{ duration: 0.5 }}
         >
@@ -57,8 +57,8 @@ export default function Tarifs() {
           className="flex flex-col items-center"
           initial={{x: 1}}
           animate={{ 
-            scale: selected === "chien" ? 1.2 : 1, 
-            x: selected === "chat" ? 100 : 0 
+            scale: selected === "chien" ? 1.2 : 0.8, 
+            x: selected === "chat" ? 100 : -10 
           }}
           transition={{ duration: 0.5 }}
         >

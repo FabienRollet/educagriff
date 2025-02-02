@@ -34,7 +34,7 @@ export default function TarifsChien() {
             <td className="py-2 px-6">Sur devis</td>
           </tr>
           <tr className="border-b border-gray-700">
-            <td className="py-2 px-6">Forfait vacances</td>
+            <td className="py-2 px-6">Forfait vacances (plus de 3 jours)</td>
             <td className="py-2 px-6">20€/jour</td>
           </tr>
           <tr className="border-b border-gray-700">
@@ -79,7 +79,7 @@ export default function TarifsChien() {
             <td className="py-2 px-6">55€</td>
           </tr>
           <tr className="border-b border-gray-700">
-            <td className="py-2 px-6">Balade éducative en groupe</td>
+            <td className="py-2 px-6">Balade éducative en groupe (sous condition)</td>
             <td className="py-2 px-6">15€</td>
           </tr>
         </tbody>
@@ -95,7 +95,7 @@ export default function TarifsChien() {
         </thead>
         <tbody>
           <tr className="border-b border-gray-700">
-            <td className="py-2 px-6">Bilan comportemental + diagnostic</td>
+            <td className="py-2 px-6">Bilan comportemental + 1er diagnostic</td>
             <td className="py-2 px-6">70€</td>
           </tr>
           <tr className="border-b border-gray-700">
@@ -103,16 +103,17 @@ export default function TarifsChien() {
             <td className="py-2 px-6">65€</td>
           </tr>
           <tr className="border-b border-gray-700">
-            <td className="py-2 px-6">Cours socialisation</td>
+            <td className="py-2 px-6">Cours socialisation (sous condition)</td>
             <td className="py-2 px-6">65€</td>
           </tr>
           <tr className="border-b border-gray-700">
-            <td className="py-2 px-6">Cours collectif</td>
+            <td className="py-2 px-6">Cours collectif (sous condition)</td>
             <td className="py-2 px-6">Sur devis</td>
           </tr>
         </tbody>
       </table>
-      <table className="bg-gray-800 text-white border border-gray-700">
+      <p>Frais kilométriques offerts pour les 1ers clients</p>
+      {/* <table className="bg-gray-800 text-white border border-gray-700">
         <thead>
           <th
             colSpan={2}
@@ -139,7 +140,7 @@ export default function TarifsChien() {
             <td className="py-2 px-6">Sur devis</td>
           </tr>
         </tbody>
-      </table>
+      </table> */}
     </section>
   );
 }
