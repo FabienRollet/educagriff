@@ -10,7 +10,7 @@ import { motion } from "framer-motion";
 export default function Tarifs() {
   const { theme, resolvedTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
-  const [selected, setSelected] = useState(null);
+  const [selected, setSelected] = useState<"chat" | "chien" | null>(null);
 
   useEffect(() => {
     setMounted(true);
