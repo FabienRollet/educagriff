@@ -24,7 +24,7 @@ export default function Menubar() {
   }, []);
 
   if (!mounted) {
-    return null; // Render nothing on the server
+    return null;
   }
 
   const menuItems = [

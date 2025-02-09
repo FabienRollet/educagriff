@@ -5,7 +5,7 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
-  --dark_background: #0a0a0a;
+  --dark_background: #1d1d1b;
   --dark_foreground: #ededed;
 }
 
@@ -28,4 +28,12 @@ html.dark body {
 .border-dark {
   @apply border;
   border-color: var(--dark_foreground);
+}
+
+.bg-light {
+  background-color: var(--foreground);
+}
+
+.bg-dark {
+  background-color: var(--dark_foreground);
 }
