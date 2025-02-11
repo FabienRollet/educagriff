@@ -1,25 +1,38 @@
 import Link from "next/link";
 import React from "react";
 import Image from "next/image";
+import { useTheme } from "next-themes";
 
 export default function HeroSection() {
+  const { resolvedTheme } = useTheme();
   return (
-    <section className="relative h-[35rem]  flex flex-col items-center justify-center bg-gray-200 overflow-hidden">
-      {/* Image en arrière-plan */}
+    <section className="relative h-[35rem] flex flex-col items-center justify-center overflow-hidden">
+      {/* Image de fond */}
       <Image
         src="/banner.png"
         alt="Bannière"
         fill
+        priority
         className="object-cover object-center"
       />
-      <div className="absolute inset-0 bg-black/40"></div>
-      <div className="relative z-10 text-white text-center">
-        <h1 className="text-3xl font-bold">
+
+      {/* Filtre de fond pour améliorer le contraste */}
+      <div
+        className={`absolute inset-0 transition-colors duration-300 ${
+          resolvedTheme === "light"
+            ? "bg-gradient-to-b from-black/40 to-orange-500/20"
+            : "bg-gradient-to-b from-black/60 to-gray-900/40"
+        }`}
+      ></div>
+
+      {/* Contenu de la section */}
+      <div className="relative z-10 text-white text-center px-6">
+        <h1 className="text-4xl font-extrabold drop-shadow-lg max-w-2xl mx-auto">
           Parce qu’un animal bien éduqué, c’est un compagnon heureux
         </h1>
         <Link
           href="/contact"
-          className="mt-4 inline-block bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700"
+          className="mt-6 inline-block bg-blue-600 text-white px-8 py-3 rounded-full text-lg font-semibold shadow-md transition-all duration-300 hover:bg-blue-700 hover:scale-105"
         >
           Voir les prestations
         </Link>
