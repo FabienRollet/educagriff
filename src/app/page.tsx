@@ -1,11 +1,21 @@
 "use client";
 import HeroSection from "./components/HeroSection";
+import ChoisirEducagriff from "./components/choisirEducagriff";
+import SectionBienvenue from "./components/SectionBienvenue";
+import QuestionsSection from "./components/QuestionsSection";
+import Tarifs from "./tarifs/page";
+// import MapSection from "./components/MapSection";
 
 export default function Home() {
+
   return (
-      <main >
-        <HeroSection />
-        <p className="flex flex-col items-center justify-center h-screen text-3xl mx-auto">Site en construction</p>
-      </main>
+    <main>
+      <HeroSection />
+      <SectionBienvenue />
+      <ChoisirEducagriff />
+      <QuestionsSection />
+      <Tarifs />
+      {/* <MapSection /> */}
+    </main>
   );
 }
