@@ -1,96 +1,83 @@
 import React from "react";
+import { useTheme } from "next-themes";
+import { motion } from "framer-motion";
 
 export default function TarifsChats() {
+  const { resolvedTheme } = useTheme();
+
+  const tableClasses = `rounded-2xl overflow-hidden shadow-lg transition-colors duration-300 ${
+    resolvedTheme === "light"
+      ? "bg-white text-gray-800"
+      : "bg-gray-800 text-gray-100"
+  }`;
+
+  const headerClasses = `text-2xl font-bold text-center p-4 ${
+    resolvedTheme === "light" ? "bg-orange-100" : "bg-gray-700"
+  }`;
+
+  const cellClasses = "py-2 p-6 border-t border-gray-700";
+
   return (
-    <section className="flex flex-wrap justify-center px-4 mb-8 gap-10 [&>table]:px-8">
-        <table className=" bg-gray-800 text-white border border-gray-700">
-        <thead>
-          <th
-            colSpan={2}
-            className="text-2xl bg-gray-900 font-bold text-center p-2"
-          >
-            Petsitting
-          </th>
-        </thead>
+    <section className="flex flex-wrap justify-center px-4 mb-8 gap-10">
+      {[
+        {
+          title: "Petsitting",
+          services: [
+            ["Pré-visite (déduite sur la première prestation)", "9€"],
+            ["Visite à domicile 30min | 45min | 1h", "15€ | 20€ | 23€"],
+            ["Amener chez le vétérinaire", "Sur devis"],
+            ["Forfait semaine", "Sur devis"],
+            ["Forfait vacances (plus de 3 jours)", "20€/jour"],
+            ["Animal supplémentaire", "+5€"],
+          ],
+        },
+        {
+          title: "Dressage & Éducation",
+          services: [
+            ["Bilan comportemental", "55€"],
+            ["Séance unique renouvelable", "50€"],
+            ["Forfait 5 séances", "240€ (48€/séance)"],
+            ["Forfait 10 séances", "460€ (46€/séance)"],
+            ["Cours d’éveil chaton", "50€"],
+            ["Sensibilisation comportementale en visio", "20€"],
+          ],
+        },
+        {
+          title: "Rééducation & Comportementalisme",
+          services: [
+            ["Bilan comportemental + 1er diagnostic", "65€"],
+            ["Séance unique renouvelable", "55€"],
+            ["Cours socialisation", "55€"],
+          ],
+        },
+      ].map((category, index) => (
+        <motion.table
+          key={index}
+          className={tableClasses}
+          initial={{ opacity: 0, y: 50 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: index * 0.2 }}
+        >
+          <thead>
+            <tr>
+              <th colSpan={2} className={headerClasses}>
+                {category.title}
+              </th>
+            </tr>
+          </thead>
           <tbody>
-            <tr className="border-b border-gray-700">
-              <td className="py-2 px-6">Pré-visite (déduite sur la première prestation)</td>
-              <td className="py-2 px-6">9€</td>
-            </tr>
-            <tr className="border-b border-gray-700">
-              <td className="py-2 px-6">Visite à domicile 30min | 45min | 1h</td>
-              <td className="py-2 px-6">15€ | 20€ | 23€</td>
-            </tr>
-            <tr className="border-b border-gray-700">
-              <td className="py-2 px-6">Amener chez le vétérinaire</td>
-              <td className="py-2 px-6">Sur devis</td>
-            </tr>
-            <tr className="border-b border-gray-700">
-              <td className="py-2 px-6">Forfait semaine</td>
-              <td className="py-2 px-6">Sur devis</td>
-            </tr>
-            <tr className="border-b border-gray-700">
-              <td className="py-2 px-6">Forfait vacances (plus de 3 jours)</td>
-              <td className="py-2 px-6">20€/jour</td>
-            </tr>
-            <tr className="border-b border-gray-700">
-              <td className="py-2 px-6">Animal supplémentaire</td>
-              <td className="py-2 px-6">+5€</td>
-            </tr>
+            {category.services.map(([service, price], idx) => (
+              <tr key={idx}>
+                <td className={cellClasses}>{service}</td>
+                <td className={cellClasses}>{price}</td>
+              </tr>
+            ))}
           </tbody>
-        </table>
-        <table className=" bg-gray-800 text-white border border-gray-700">
-        <thead>
-          <th
-            colSpan={2}
-            className="text-2xl bg-gray-900 font-bold text-center p-2"
-          >
-            Dressage & Éducation
-          </th>
-        </thead>
-          <tbody>
-            <tr className="border-b border-gray-700"><td className="py-2 px-6">Bilan comportemental</td><td className="py-2 px-6">55€</td></tr>
-            <tr className="border-b border-gray-700"><td className="py-2 px-6">Séance unique renouvelable</td><td className="py-2 px-6">50€</td></tr>
-            <tr className="border-b border-gray-700"><td className="py-2 px-6">Forfait 5 séances</td><td className="py-2 px-6">240€ (48€/séance)</td></tr>
-            <tr className="border-b border-gray-700"><td className="py-2 px-6">Forfait 10 séances</td><td className="py-2 px-6">460€ (46€/séance)</td></tr>
-            <tr className="border-b border-gray-700"><td className="py-2 px-6">Cours d’éveil chaton</td><td className="py-2 px-6">50€</td></tr>
-            <tr className="border-b border-gray-700"><td className="py-2 px-6">Sensibilisation comportementale en visio</td><td className="py-2 px-6">20€</td></tr>
-          </tbody>
-        </table>
-
-        <table className="bg-gray-800 text-white border border-gray-700">
-        <thead>
-          <th
-            colSpan={2}
-            className="text-2xl bg-gray-900 font-bold text-center p-2"
-          >
-            Rééducation & Comportementalisme
-          </th>
-        </thead>
-          <tbody>
-            <tr className="border-b border-gray-700"><td className="py-2 px-6">Bilan comportemental + 1er diagnostic</td><td className="py-2 px-6">65€</td></tr>
-            <tr className="border-b border-gray-700"><td className="py-2 px-6">Séance unique renouvelable</td><td className="py-2 px-6">55€</td></tr>
-            <tr className="border-b border-gray-700"><td className="py-2 px-6">Cours socialisation</td><td className="py-2 px-6">55€</td></tr>
-          </tbody>
-
-        </table>
-        <p>Frais kilométriques offerts pour les 1ers clients</p>
-        {/* <table className="bg-gray-800 text-white border border-gray-700">
-        <thead>
-          <th
-            colSpan={2}
-            className="text-2xl bg-gray-900 font-bold text-center p-2"
-          >
-            Frais annexes
-          </th>
-        </thead>
-          <tbody>
-            <tr className="border-b border-gray-700"><td className="py-2 px-6">Frais kilométriques (0 à X km)</td><td className="py-2 px-6">Offert</td></tr>
-            <tr className="border-b border-gray-700"><td className="py-2 px-6">Frais kilométriques (X à X km)</td><td className="py-2 px-6">0.X cts/km</td></tr>
-            <tr className="border-b border-gray-700"><td className="py-2 px-6">Frais kilométriques (X km et plus)</td><td className="py-2 px-6">Sur devis</td></tr>
-            <tr className="border-b border-gray-700"><td className="py-2 px-6">Service personnalisable (chien/chat)</td><td className="py-2 px-6">Sur devis</td></tr>
-          </tbody>
-        </table> */}
+        </motion.table>
+      ))}
+      <p className="text-center mt-4 w-full" >
+        Frais kilométriques offerts pour les premiers clients
+      </p>
     </section>
   );
 }

@@ -28,7 +28,7 @@ export default function HeroSection() {
       {/* Contenu de la section */}
       <div className="relative z-10 text-white text-center px-6">
         <h1 className="text-4xl font-extrabold drop-shadow-lg max-w-2xl mx-auto">
-          Parce qu’un animal bien éduqué, c’est un compagnon heureux
+          Parce qu’un animal bien éduqué, c’est un compagnon heureux !
         </h1>
         <Link
           href="/contact"
