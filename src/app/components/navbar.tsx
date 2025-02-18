@@ -36,24 +36,26 @@ export default function Menubar() {
   ];
 
   return (
-    <Navbar onMenuOpenChange={setIsMenuOpen}>
+    <Navbar
+      onMenuOpenChange={setIsMenuOpen} className={`${resolvedTheme === "light" ? "bg-[--background]" : "bg-[--foreground]"}`}
+    >
       <NavbarContent>
         <NavbarMenuToggle
           aria-label={isMenuOpen ? "Close menu" : "Open menu"}
           className="sm:hidden"
         />
         <NavbarBrand>
-        <Link className="flex" color="foreground" href="/">
-          <Image
-            src="/logo.png"
-            alt="Logo"
-            width={50}
-            height={50}
-            className="mr-2"
-          />
-          <p className="font-bold text-inherit md:hidden lg:block">
-            Educagriff
-          </p>
+          <Link className="flex" color="foreground" href="/">
+            <Image
+              src="/logo.png"
+              alt="Logo"
+              width={50}
+              height={50}
+              className="mr-2"
+            />
+            <p className="font-bold text-inherit md:hidden lg:block">
+              Educagriff
+            </p>
           </Link>
         </NavbarBrand>
       </NavbarContent>
@@ -89,7 +91,9 @@ export default function Menubar() {
       <NavbarContent justify="end">
         <NavbarItem isActive>
           <Link
-            className={`p-2 border-4 rounded-full hover:bg-default-200 ${resolvedTheme === 'light' ? 'border-light' : 'border-dark'}`}
+            className={`p-2 border-4 rounded-full hover:bg-default-200 ${
+              resolvedTheme === "light" ? "border-light" : "border-dark"
+            }`}
             href="tel:0651271749"
           >
             06 51 27 17 49
@@ -100,7 +104,7 @@ export default function Menubar() {
         </NavbarItem>
       </NavbarContent>
 
-      <NavbarMenu className="items-center mt-8 gap-5 font-medium">
+      <NavbarMenu className="items-center gap-5 font-medium">
         {menuItems.map((item, index) => (
           <NavbarMenuItem key={`${item}-${index}`}>
             <Link
