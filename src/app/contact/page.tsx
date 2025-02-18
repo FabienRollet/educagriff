@@ -7,7 +7,7 @@ export default function ContactForm() {
   const { resolvedTheme } = useTheme();
   const [isSending, setIsSending] = useState(false);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = () => {
     setIsSending(true);
     setTimeout(() => setIsSending(false), 30000);
   };
