@@ -104,7 +104,7 @@ export default function Menubar() {
         </NavbarItem>
       </NavbarContent>
 
-      <NavbarMenu className="items-center mt-8 gap-5 font-medium">
+      <NavbarMenu className="items-center gap-5 font-medium">
         {menuItems.map((item, index) => (
           <NavbarMenuItem key={`${item}-${index}`}>
             <Link

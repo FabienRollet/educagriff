@@ -18,7 +18,7 @@ export default function ContactForm() {
         resolvedTheme === "light"
           ? "bg-gradient-to-b from-white to-orange-50 text-gray-900"
           : "bg-gradient-to-b from-black to-gray-900 text-gray-100"
-      }`}
+      } `}
     >
       <h2
         className={`text-center text-3xl font-bold mb-8 ${
@@ -33,17 +33,23 @@ export default function ContactForm() {
         }`}
       ></div>
 
-      <div className="max-w-3xl mx-auto bg-white dark:bg-gray-800 p-8 rounded-2xl shadow-lg">
+      <div className={`max-w-3xl mx-auto bg-white dark:bg-gray-800 p-8 rounded-2xl shadow-lg ${
+              resolvedTheme === "light"
+                ? "border-orange-200"
+                : "border-gray-700 bg-gray-700 text-gray-100"
+            }`}>
         <form
           action="https://formspree.io/f/xovjpllo"
           method="POST"
           className="flex flex-col gap-4"
           onSubmit={handleSubmit}
         >
+          <p className="italic">* : champs obligatoire</p>
+                    <label htmlFor="tel">Nom*</label>
           <input
             type="text"
             name="name"
-            placeholder="Nom"
+            placeholder="Dupond"
             required
             className={`p-3 rounded-lg border ${
               resolvedTheme === "light"
@@ -51,10 +57,11 @@ export default function ContactForm() {
                 : "border-gray-700 bg-gray-700 text-gray-100"
             }`}
           />
+          <label htmlFor="tel">Email*</label>
           <input
             type="email"
             name="email"
-            placeholder="Email"
+            placeholder="Exemple@....com"
             required
             className={`p-3 rounded-lg border ${
               resolvedTheme === "light"
@@ -62,9 +69,21 @@ export default function ContactForm() {
                 : "border-gray-700 bg-gray-700 text-gray-100"
             }`}
           />
+          <label htmlFor="tel">Numéro de téléphone</label>
+          <input
+            type="tel"
+            name="phone"
+            placeholder="06 00 00 00 00"
+            className={`p-3 rounded-lg border ${
+              resolvedTheme === "light"
+                ? "border-orange-200"
+                : "border-gray-700 bg-gray-700 text-gray-100"
+            }`}
+          />
+          <label htmlFor="message">Votre message*</label>
           <textarea
             name="message"
-            placeholder="Votre message"
+            placeholder="Tapez ici..."
             required
             rows={5}
             className={`p-3 rounded-lg border ${
