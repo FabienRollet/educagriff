@@ -34,9 +34,7 @@ export default function ContactForm() {
       ></div>
 
       <div className={`max-w-3xl mx-auto bg-white dark:bg-gray-800 p-8 rounded-2xl shadow-lg ${
-              resolvedTheme === "light"
-                ? "border-orange-200"
-                : "border-gray-700 bg-gray-700 text-gray-100"
+              resolvedTheme === "light" ? "border border-gray-300 bg-white shadow-lg text-gray-800" : "border border-orange-400 backdrop-blur-md bg-gray-700/70 shadow-[0_0_20px_rgba(255,255,255,0.15)] text-gray-100"
             }`}>
         <form
           action="https://formspree.io/f/xovjpllo"
