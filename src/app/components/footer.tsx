@@ -5,18 +5,18 @@ export default function footer() {
   return (
     <footer>
       <ul className="lg:grid flex flex-col lg:grid-rows-1 lg:grid-cols-3 bg-neutral text-neutral-content py-10  items-center lg:justify-items-center justify-center lg:justify-normal px-4 lg:px-20">
-        <li className="flex flex-col lg:flex-row items-center">
+        <li className="flex flex-col lg:flex-row items-center pb-8">
           <Image src="/logo.png" alt="Logo" width={150} height={150} className="lg:pr-2" />
-          <p>
+          <p className="text-center lg:text-left">
             <span className="text-lg font-bold">Educagriff</span>
             <br />
             Educateur comportementaliste canin et félin
-            <br />
-            N° SIRET : 888 888 888 888
+            {/* <br />
+            N° SIRET : 888 888 888 888 */}
           </p>
         </li>
         <li className="text-xl flex flex-col gap-6 pb-5">
-          <a href="tel:0651271749" className="flex items-center gap-2">
+          <a href="tel:0651271749" className="flex items-center justify-center lg:justify-start gap-2">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="24"
@@ -45,8 +45,8 @@ export default function footer() {
             educagriff@gmail.com
           </a>
         </li>
-        <li className="text-xl flex flex-wrap gap-4">
-          <p className="w-full">Réseaux sociaux :</p>
+        <li className="text-xl flex flex-wrap item-center justify-center lg:justify-start gap-6 lg:gap-4">
+          <p className="lg:w-full">Réseaux sociaux :</p>
           <a
             href="https://www.instagram.com/educagriff/"
             target="_blank"
@@ -77,7 +77,7 @@ export default function footer() {
               <path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z"></path>
             </svg>
           </a>
-          <p className="w-full">Sur Bordeaux métropole et alentours</p>
+          <p className="w-full text-center lg:text-start">Sur Bordeaux métropole et alentours</p>
         </li>
       </ul>
     </footer>

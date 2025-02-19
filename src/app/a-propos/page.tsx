@@ -110,27 +110,26 @@ export default function APropos() {
         ))}
       </article>
 
-      <Modal
-        isOpen={!!selectedImage}
-        onClose={() => setSelectedImage(null)}
-        backdrop="blur"
-        className="w-auto h-auto p-10 m-10  m-auto [&>button]:p-2 [&>button]:border-5 [&>button]:border-white [&>button]:bg-black [&>button]:text-white [&>button]:text-3xl"
-      >
-        <ModalContent className="relative mt-16  ">
-          <ModalBody>
-            {selectedImage && (
-              <Image
-                src={selectedImage.src}
-                alt={selectedImage.alt}
-                width={selectedImage.orientation === "landscape" ? 1100 : 560}
-                height={selectedImage.orientation === "landscape" ? 600 : 800}
-                layout="intrinsic"
-                className="rounded-lg mx-auto shadow-2xl max-w-full max-h-screen"
-              />
-            )}
-          </ModalBody>
-        </ModalContent>
-      </Modal>
+<Modal
+  isOpen={!!selectedImage}
+  onClose={() => setSelectedImage(null)}
+  backdrop="blur"
+  className="w-auto h-auto p-10 m-10 m-auto [&>button]:p-2 [&>button]:border-5 [&>button]:border-white [&>button]:bg-black [&>button]:text-white [&>button]:text-3xl"
+>
+  <ModalContent className="relative max-w-screen-lg">
+    <ModalBody className="flex justify-center items-center">
+      {selectedImage && (
+        <Image
+          src={selectedImage.src}
+          alt={selectedImage.alt}
+          width={selectedImage.orientation === "landscape" ? 1600 : 800}
+          height={selectedImage.orientation === "landscape" ? 900 : 1200}
+          className="rounded-lg mx-auto shadow-2xl w-full h-auto max-h-[90vh] object-contain"
+        />
+      )}
+    </ModalBody>
+  </ModalContent>
+</Modal>
 
       <article className="text-center py-12 ">
         <p className="text-lg mb-4 font-medium">

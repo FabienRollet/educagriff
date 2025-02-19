@@ -58,7 +58,7 @@ export default function Tarifs() {
           >
             <Button
               onClick={() => setSelected(animal as "chat" | "chien")}
-              className={`flex items-center justify-center w-40 h-40 rounded-full border-4 ${
+              className={`flex items-center justify-center w-40 h-40 rounded-full border-2 ${
                 resolvedTheme === "light"
                   ? "border-orange-400 bg-white shadow-lg hover:shadow-2xl"
                   : "border-orange-400 bg-gray-700/70 backdrop-blur-md shadow-[0_0_20px_rgba(255,255,255,0.15)] hover:shadow-[0_0_30px_rgba(255,255,255,0.25)]"

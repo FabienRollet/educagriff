@@ -31,8 +31,8 @@ export default function HeroSection() {
           Parce qu’un animal bien éduqué, c’est un compagnon heureux !
         </h1>
         <Link
-          href="/contact"
-          className="mt-6 inline-block bg-blue-600 text-white px-8 py-3 rounded-full text-lg font-semibold shadow-md transition-all duration-300 hover:bg-blue-700 hover:scale-105"
+          href="/tarifs"
+          className="mt-6 inline-block bg-orange-500 text-gray-100 text-white px-8 py-3 rounded-full text-lg font-semibold shadow-md transition-all duration-300 hover:bg-orange-700 hover:scale-105"
         >
           Voir les prestations
         </Link>
