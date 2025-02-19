@@ -52,7 +52,7 @@ export default function QuestionsSection() {
     }
   ];
 
-  function handleOpenModal(question) {
+  function handleOpenModal(question: { title: string; details: string }) {
     setModalContent(question);
     onOpen();
   }
