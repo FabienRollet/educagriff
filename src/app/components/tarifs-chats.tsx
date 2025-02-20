@@ -1,9 +1,17 @@
 import React from "react";
+import { useState, useEffect } from "react";
 import { useTheme } from "next-themes";
 import { motion } from "framer-motion";
 
 export default function TarifsChats() {
   const { resolvedTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  if (!mounted) return null;
 
   const tableClasses = `rounded-2xl overflow-hidden shadow-lg transition-colors duration-300 ${
     resolvedTheme === "light"

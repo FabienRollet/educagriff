@@ -2,12 +2,19 @@ import Link from "next/link";
 import React from "react";
 import Image from "next/image";
 import { useTheme } from "next-themes";
+import { useState, useEffect } from "react";
 
 export default function HeroSection() {
   const { resolvedTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  if (!mounted) return null;
   return (
     <section className="relative h-[35rem] flex flex-col items-center justify-center overflow-hidden">
-      {/* Image de fond */}
       <Image
         src="/banner.png"
         alt="Bannière"
@@ -15,8 +22,6 @@ export default function HeroSection() {
         priority
         className="object-cover object-center"
       />
-
-      {/* Filtre de fond pour améliorer le contraste */}
       <div
         className={`absolute inset-0 transition-colors duration-300 ${
           resolvedTheme === "light"
@@ -25,7 +30,6 @@ export default function HeroSection() {
         }`}
       ></div>
 
-      {/* Contenu de la section */}
       <div className="relative z-10 text-white text-center px-6">
         <h1 className="text-4xl font-extrabold drop-shadow-lg max-w-2xl mx-auto">
           Parce qu’un animal bien éduqué, c’est un compagnon heureux !

@@ -3,7 +3,7 @@
 import { VisuallyHidden, useSwitch } from "@heroui/react";
 import { useTheme } from "next-themes";
 
-import { SVGProps } from "react";
+import { SVGProps, useState, useEffect } from "react";
 
 export const MoonIcon = (props: SVGProps<SVGSVGElement>) => {
   return (
@@ -46,12 +46,16 @@ export const SunIcon = (props: SVGProps<SVGSVGElement>) => {
 import { SwitchProps } from "@heroui/react";
 
 const ThemeSwitch = (props: SwitchProps) => {
-  const { theme, setTheme } = useTheme();
-  const { Component, slots, isSelected, getBaseProps, getInputProps, getWrapperProps } = useSwitch({
-    ...props,
-    isSelected: theme === "dark",
-    onChange: () => setTheme(theme === "dark" ? "light" : "dark"),
-  });
+  const { theme, setTheme, resolvedTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
+useEffect(() => setMounted(true), []);
+
+const { Component, slots, isSelected, getBaseProps, getInputProps, getWrapperProps } = useSwitch({
+  ...props,
+  isSelected: resolvedTheme === "dark",
+  onChange: () => setTheme(theme === "dark" ? "light" : "dark"),
+});
+if (!mounted) return null;
 
   return (
     <div className={`flex flex-col gap-2 border-4 rounded-full ${theme === 'light' ? 'border-light' : 'border-dark'}`}>

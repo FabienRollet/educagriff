@@ -23,9 +23,7 @@ export default function Menubar() {
     setMounted(true);
   }, []);
 
-  if (!mounted) {
-    return null;
-  }
+  if (!mounted) return null;
 
   const menuItems = [
     { text: "Accueil", href: "/" },

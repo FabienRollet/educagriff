@@ -15,6 +15,7 @@ export default function Tarifs() {
   useEffect(() => setMounted(true), []);
   if (!mounted) return null;
 
+  
   return (
     <section
       className={`min-h-screen py-16 transition-colors duration-300 w-full ${
