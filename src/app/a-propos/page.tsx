@@ -1,12 +1,19 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import { useTheme } from "next-themes";
 import { Modal, ModalContent, ModalBody } from "@heroui/react";
 
 export default function APropos() {
   const { resolvedTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
   const [selectedImage, setSelectedImage] = useState<{ src: string; alt: string; orientation: string } | null>(null);
+  if (!mounted) return null;
   const diplomes = [
     {
       src: "/diplome-biologie.png",

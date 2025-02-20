@@ -9,12 +9,19 @@ import {
   Button,
   useDisclosure,
 } from "@heroui/react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 export default function QuestionsSection() {
   const { resolvedTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
   const [modalContent, setModalContent] = useState({ title: "", details: "" });
+  if (!mounted) return null;
 
   const questions = [
     {

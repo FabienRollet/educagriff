@@ -22,9 +22,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning> 
       <body className={gelasio.variable}>
-        <ThemeProvider attribute="class" defaultTheme="light" enableSystem={true}>
+        <ThemeProvider attribute="class" defaultTheme="light" enableSystem={false}>
           <Navbar />
           {children}
           <Footer />

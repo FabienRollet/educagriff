@@ -1,12 +1,18 @@
 "use client";
 import { useTheme } from "next-themes";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { FaInstagram, FaFacebook, FaPhone } from "react-icons/fa";
 
 export default function ContactForm() {
   const { resolvedTheme } = useTheme();
   const [isSending, setIsSending] = useState(false);
+  const [mounted, setMounted] = useState(false);
 
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  if (!mounted) return null;
   const handleSubmit = () => {
     setIsSending(true);
     setTimeout(() => setIsSending(false), 30000);

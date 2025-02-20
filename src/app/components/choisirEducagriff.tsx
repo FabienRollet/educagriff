@@ -9,9 +9,17 @@ import {
   FaQuestionCircle,
   FaHandsHelping,
 } from "react-icons/fa";
+import { useState, useEffect } from "react";
 
 export default function QuiSuisJe() {
   const { resolvedTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  if (!mounted) return null;
   const features = [
     {
       icon: FaClipboardCheck,
