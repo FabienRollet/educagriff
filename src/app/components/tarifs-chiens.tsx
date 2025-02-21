@@ -36,7 +36,7 @@ export default function TarifsChien() {
             ["Balade hygiénique 30min", "15€"],
             ["Balade éducative 1h", "23€"],
             ["Forfait semaine", "Sur devis"],
-            ["Forfait vacances (plus de 3 jours)", "20€/jour"],
+            ["Forfait vacances (plus de 3 jours)", "Sur devis"],
             ["Animal supplémentaire", "+5€"],
           ],
         },
