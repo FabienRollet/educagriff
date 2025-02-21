@@ -35,7 +35,7 @@ export default function TarifsChats() {
             ["Visite à domicile 30min | 45min | 1h", "15€ | 20€ | 23€"],
             ["Amener chez le vétérinaire", "Sur devis"],
             ["Forfait semaine", "Sur devis"],
-            ["Forfait vacances (plus de 3 jours)", "20€/jour"],
+            ["Forfait vacances (plus de 3 jours)", "Sur devis"],
             ["Animal supplémentaire", "+5€"],
           ],
         },
