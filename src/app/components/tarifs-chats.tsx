@@ -53,9 +53,9 @@ export default function TarifsChats() {
         {
           title: "Rééducation & Comportementalisme",
           services: [
-            ["Bilan comportemental + 1er diagnostic", "65€"],
-            ["Séance unique renouvelable", "55€"],
-            ["Cours socialisation", "55€"],
+            ["Bilan comportemental + 1er diagnostic", "70€"],
+            ["Séance unique renouvelable", "65€"],
+            ["Cours socialisation", "65€"],
           ],
         },
       ].map((category, index) => (
