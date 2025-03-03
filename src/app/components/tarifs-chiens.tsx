@@ -33,6 +33,7 @@ export default function TarifsChien() {
           services: [
             ["Pré-visite (déduite sur la première prestation)", "9€"],
             ["Visite à domicile 30min | 45min | 1h", "15€ | 20€ | 23€"],
+            ["Amener chez le vétérinaire", "Sur devis"],
             ["Balade hygiénique 30min", "15€"],
             ["Balade éducative 1h", "23€"],
             ["Forfait semaine", "Sur devis"],
