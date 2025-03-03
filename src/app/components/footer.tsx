@@ -11,8 +11,8 @@ export default function footer() {
             <span className="text-lg font-bold">Educagriff</span>
             <br />
             Educateur comportementaliste canin et félin
-            {/* <br />
-            N° SIRET : 888 888 888 888 */}
+            <br />
+            N° SIRET : 939 104 220 000 16
           </p>
         </li>
         <li className="text-xl flex flex-col gap-6 pb-5">
