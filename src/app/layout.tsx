@@ -11,9 +11,9 @@ const gelasio = Gelasio({
 });
 
 export const metadata: Metadata = {
-  title: "Educagriff",
+  title: "Éducagriff | Éducateur Comportementaliste canin & félin, Petsitter en Gironde",
   description:
-    "“Educagriff vous offre des solutions sur mesure grâce à notre éducateur comportementaliste, petsitter canin et félin en vous accompagnant pour le bien-être de vos animaux.",
+    "“Educagriff est une entreprise de prestations de services en lien avec les animaux de compagnie vous trouverez un service de petsitter, d'éducateur comportementaliste canin et félin sur Bordeaux et la CUB, cette entreprise à pour but de vous conseiller, vous accompagner, de s'occuper, d’éduquer et rééduquer vos animaux selon vos besoins.",
 };
 
 export default function RootLayout({
