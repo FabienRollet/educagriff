@@ -46,7 +46,7 @@ export default function APropos() {
       }`}
     >
       <h1 className="text-center text-4xl font-bold mb-6 pt-8 text-orange-500">
-        À propos d&apos;Educagriff
+        Qui-suis-je ?
       </h1>
       <div
         className={`h-1 w-24 mx-auto ${
