@@ -41,7 +41,7 @@ export default function Tarifs() {
         Choisissez votre animal :
       </h2>
       <p className="italic text-center mx-8 mb-8 flex items-center justify-center gap-2">
-        Pour plus d&apos;informations sur les prestations, appuyez sur les 🛈.</p>
+        Pour plus d&apos;informations sur les prestations, appuyez sur les &#x1F6C8;.</p>
 
       <section className="flex items-start justify-evenly flex-wrap pb-16 w-full">
         {["chat", "chien"].map((animal) => (
