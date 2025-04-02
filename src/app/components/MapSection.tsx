@@ -1,44 +1,100 @@
-// import { useTheme } from "next-themes";
 // import { MapContainer, TileLayer, Polygon } from "react-leaflet";
 // import "leaflet/dist/leaflet.css";
 // import { useEffect, useState } from "react";
 // import { LatLngBounds, LatLng } from "leaflet";
+// import { useTheme } from "next-themes";
 
-// const citiesBounds: LatLng[][] = [
-//   // Contours des villes autour de Bordeaux
-//   [
-//     new LatLng(44.786, -0.585), // Cadaujac
-//     new LatLng(44.803, -0.575), // Villenave d'Ornon
-//     new LatLng(44.850, -0.560), // Bègles
-//     new LatLng(44.830, -0.551), // Léognan
-//     new LatLng(44.785, -0.502), // Martillac
-//     new LatLng(44.823, -0.512), // St-Médard-d'Eyrans
-//     new LatLng(44.790, -0.620), // Talence
-//     new LatLng(44.700, -0.663), // La Brède
-//     new LatLng(44.696, -0.666), // Saint-Selve
-//     new LatLng(44.738, -0.551), // Beautiran
-//     new LatLng(44.829, -0.516), // Cestas
-//     new LatLng(44.837, -0.607), // Pessac
-//     new LatLng(44.858, -0.560), // Bordeaux (centre)
-//   ]
-// ];
+// interface CityBoundary {
+//   type: string;
+//   features: Array<{
+//     type: string;
+//     geometry: {
+//       type: string;
+//       coordinates: number[][][];
+//     };
+//   }>;
+// }
 
 // export default function MapSection() {
 //   const { resolvedTheme } = useTheme();
   
 //   const [map, setMap] = useState<L.Map | null>(null);
+//   const [cityBoundaries, setCityBoundaries] = useState<{
+//     bordeaux: LatLng[][] | null;
+//     begles: LatLng[][] | null;
+//   }>({
+//     bordeaux: null,
+//     begles: null
+//   });
 
 //   const center: [number, number] = [44.858, -0.575]; // Coordonnées de Bordeaux
 
-//   useEffect(() => {
-//     if (map) {
-//       // Ajouter un contour autour des villes
-//       const bounds = new LatLngBounds(
-//         citiesBounds.flat().map(city => new LatLng(city[0], city[1]))
+//   // Fonction pour convertir les coordonnées GeoJSON en LatLng
+//   const convertToLatLng = (coordinates: number[][][]): LatLng[][] => {
+//     return coordinates.map(polygon => 
+//       polygon[0].map(coord => 
+//         new LatLng(coord[1], coord[0])
+//       )
+//     );
+//   };
+
+//   // Fonction pour récupérer les frontières d'une ville
+//   const fetchCityBoundaries = async (cityName: string) => {
+//     try {
+//       const response = await fetch(
+//         `https://nominatim.openstreetmap.org/search?format=geojson&limit=1&city=${cityName}&polygon_geojson=1`,
+//         {
+//           headers: {
+//             'User-Agent': 'educagriff/1.0 (gamarinbook@gmail.com)'
+//           }
+//         }
 //       );
+      
+//       if (!response.ok) {
+//         throw new Error('Erreur de récupération des données');
+//       }
+
+//       const data: CityBoundary = await response.json();
+      
+//       // Vérifier si des polygones sont disponibles
+//       if (data.features.length > 0 && data.features[0].geometry.type === 'Polygon') {
+//         return convertToLatLng(data.features[0].geometry.coordinates);
+//       }
+      
+//       return null;
+//     } catch (error) {
+//       console.error(`Erreur pour ${cityName}:`, error);
+//       return null;
+//     }
+//   };
+
+//   // Récupérer les frontières lors du montage du composant
+//   useEffect(() => {
+//     const loadBoundaries = async () => {
+//       const bordeauxBoundaries = await fetchCityBoundaries('Bordeaux');
+//       const beglesBoundaries = await fetchCityBoundaries('Bègles');
+
+//       setCityBoundaries({
+//         bordeaux: bordeauxBoundaries,
+//         begles: beglesBoundaries
+//       });
+//     };
+
+//     loadBoundaries();
+//   }, []);
+
+//   // Ajuster la vue une fois les données chargées
+//   useEffect(() => {
+//     if (map && cityBoundaries.bordeaux && cityBoundaries.begles) {
+//       const allBoundaries = [
+//         ...cityBoundaries.bordeaux.flat(),
+//         ...cityBoundaries.begles.flat()
+//       ];
+
+//       const bounds = new LatLngBounds(allBoundaries);
 //       map.fitBounds(bounds);
 //     }
-//   }, [map]);
+//   }, [map, cityBoundaries]);
 
 //   return (
 //     <section
@@ -53,7 +109,7 @@
 //           resolvedTheme === "light" ? "text-orange-600" : "text-orange-400"
 //         }`}
 //       >
-//         Découvrez notre zone d’intervention
+//         Découvrez notre zone d'intervention
 //       </h2>
 
 //       <div className="max-w-6xl mx-auto">
@@ -68,13 +124,25 @@
 //             attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
 //           />
 
-//           {/* Contours des villes */}
-//           <Polygon
-//             positions={citiesBounds}
-//             color={resolvedTheme === "light" ? "orange" : "yellow"}
-//             fillOpacity={0.1}
-//             weight={2}
-//           />
+//           {/* Contours de Bordeaux */}
+//           {cityBoundaries.bordeaux && (
+//             <Polygon
+//               positions={cityBoundaries.bordeaux}
+//               color="red"
+//               fillOpacity={0.2}
+//               weight={2}
+//             />
+//           )}
+
+//           {/* Contours de Bègles */}
+//           {cityBoundaries.begles && (
+//             <Polygon
+//               positions={cityBoundaries.begles}
+//               color="blue"
+//               fillOpacity={0.2}
+//               weight={2}
+//             />
+//           )}
 //         </MapContainer>
 //       </div>
 //     </section>
