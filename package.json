@@ -6,7 +6,8 @@
     "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "import-data": "node prisma/import-data.mjs"
   },
   "dependencies": {
     "@heroui/react": "^2.6.13",
@@ -14,11 +15,15 @@
     "@nextui-org/navbar": "^2.2.8",
     "@nextui-org/system": "^2.4.6",
     "@nextui-org/theme": "^2.4.5",
+    "@prisma/client": "^6.5.0",
+    "@types/js-cookie": "^3.0.6",
     "daisyui": "^4.12.23",
     "framer-motion": "^11.18.2",
+    "js-cookie": "^3.0.5",
     "leaflet": "^1.9.4",
     "next": "^15.1.4",
     "next-themes": "^0.4.4",
+    "prisma": "^6.5.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-icons": "^5.4.0",
@@ -34,6 +39,10 @@
     "eslint-config-next": "15.1.4",
     "postcss": "^8",
     "tailwindcss": "^3.4.1",
+    "ts-node": "^10.9.2",
     "typescript": "^5"
+  },
+  "prisma": {
+    "seed": "node prisma/seed.mjs"
   }
 }
