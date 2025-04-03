@@ -1,7 +1,6 @@
 import { NextResponse } from 'next/server';
-import { PrismaClient } from '@prisma/client';
-
-const prisma = new PrismaClient();
+import { prisma } from '@/lib/prisma';
+import { Prisma } from '@prisma/client';
 
 // GET /api/prices/[id]
 export async function GET(
@@ -37,7 +36,9 @@ export async function PUT(
         currency: body.currency,
         description: body.description,
         category: body.category,
-      },
+        animalType: body.animalType as 'CAT' | 'DOG',
+        order: body.order
+      } as Prisma.PriceUpdateInput,
     });
     return NextResponse.json(price);
   } catch (error: Error | unknown) {

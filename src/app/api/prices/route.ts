@@ -1,16 +1,33 @@
 import { NextResponse } from 'next/server';
-import { PrismaClient } from '@prisma/client';
-
-const prisma = new PrismaClient();
+import { prisma } from '@/lib/prisma';
+import { Prisma } from '@prisma/client';
 
 // GET /api/prices
-export async function GET() {
+export async function GET(request: Request) {
   try {
-    const prices = await prisma.price.findMany();
+    const { searchParams } = new URL(request.url);
+    const animalType = searchParams.get('animalType');
+
+    const where: Prisma.PriceWhereInput = {};
+    if (animalType) {
+      where.animalType = animalType as 'CAT' | 'DOG';
+    }
+
+    const prices = await prisma.price.findMany({
+      where,
+      orderBy: [
+        { category: 'asc' },
+        { order: 'asc' }
+      ]
+    });
+
     return NextResponse.json(prices);
-  } catch (error: Error | unknown) {
+  } catch (error) {
     console.error('Erreur lors de la récupération des prix:', error);
-    return NextResponse.json({ error: 'Erreur lors de la récupération des prix' }, { status: 500 });
+    return NextResponse.json(
+      { error: 'Erreur lors de la récupération des prix' },
+      { status: 500 }
+    );
   }
 }
 
@@ -20,31 +37,43 @@ export async function POST(request: Request) {
     const body = await request.json();
     const price = await prisma.price.create({
       data: {
-        productName: body.productName,
-        price: body.price,
-        currency: body.currency,
-        description: body.description,
-        category: body.category,
-        animalType: body.animalType,
-      },
+        ...body,
+        animalType: body.animalType as 'CAT' | 'DOG'
+      }
     });
     return NextResponse.json(price);
-  } catch (error: Error | unknown) {
+  } catch (error) {
     console.error('Erreur lors de la création du prix:', error);
-    return NextResponse.json({ error: 'Erreur lors de la création du prix' }, { status: 500 });
+    return NextResponse.json(
+      { error: 'Erreur lors de la création du prix' },
+      { status: 500 }
+    );
   }
 }
 
 // DELETE /api/prices/[id]
-export async function DELETE(request: Request, { params }: { params: { id: string } }) {
+export async function DELETE(request: Request) {
   try {
-    const id = parseInt(params.id);
+    const { searchParams } = new URL(request.url);
+    const id = searchParams.get('id');
+
+    if (!id) {
+      return NextResponse.json(
+        { error: 'ID manquant' },
+        { status: 400 }
+      );
+    }
+
     await prisma.price.delete({
-      where: { id },
+      where: { id: parseInt(id) }
     });
+
     return NextResponse.json({ message: 'Prix supprimé avec succès' });
-  } catch (error: Error | unknown) {
+  } catch (error) {
     console.error('Erreur lors de la suppression du prix:', error);
-    return NextResponse.json({ error: 'Erreur lors de la suppression du prix' }, { status: 500 });
+    return NextResponse.json(
+      { error: 'Erreur lors de la suppression du prix' },
+      { status: 500 }
+    );
   }
 } 

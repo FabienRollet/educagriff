@@ -34,6 +34,7 @@ export default function Menubar() {
     { text: "Qui-suis-je ?", href: "/a-propos" },
     { text: "Quiz", href: "/quiz" },
     { text: "Tarifs", href: "/tarifs" },
+    { text: "Galerie", href: "/galerie" },
     { text: "Contact", href: "/contact" },
     {
       text: "",
@@ -96,10 +97,10 @@ export default function Menubar() {
       <NavbarContent>
         <NavbarMenuToggle
           aria-label={isMenuOpen ? "Close menu" : "Open menu"}
-          className="sm:hidden"
+          className="lg:hidden"
         />
         <NavbarBrand>
-          <Link className="flex" color="foreground" href="/">
+          <Link className="flex mr-16" color="foreground" href="/">
             <Image
               src="/logo.png"
               alt="Logo"
@@ -113,7 +114,7 @@ export default function Menubar() {
           </Link>
         </NavbarBrand>
       </NavbarContent>
-      <NavbarContent className="hidden sm:flex gap-8" justify="center">
+      <NavbarContent className="hidden lg:flex gap-8" justify="center">
         {menuItems.map((item) => (
           <NavbarItem key={item.href}>
             <Link
@@ -173,7 +174,7 @@ export default function Menubar() {
             06 51 27 17 49
           </Link>
         </NavbarItem>
-        <NavbarItem className="hidden sm:flex">
+        <NavbarItem className="hidden lg:flex">
           <ThemeSwitch />
         </NavbarItem>
       </NavbarContent>
