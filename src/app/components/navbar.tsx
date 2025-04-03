@@ -108,7 +108,7 @@ export default function Menubar() {
               height={50}
               className="mr-2"
             />
-            <p className="font-bold text-inherit md:hidden lg:block">
+            <p className={`font-bold ${resolvedTheme === "light" ? "text-gray-900" : "text-gray-100"} md:hidden lg:block`}>
               Educagriff
             </p>
           </Link>
@@ -118,18 +118,19 @@ export default function Menubar() {
         {menuItems.map((item) => (
           <NavbarItem key={item.href}>
             <Link
-              color="foreground"
               href={item.href}
               target={item.external ? "_blank" : undefined}
               rel={item.external ? "noreferrer" : undefined}
-              className="relative group flex items-center gap-2"
+              className={`relative group flex items-center gap-2 ${
+                resolvedTheme === "light" ? "text-gray-900" : "text-gray-100"
+              }`}
             >
               {item.icon && <span className="mr-0">{item.icon}</span>}
               {item.text}
               <span
-                className="absolute left-0 bottom-[-2px] w-0 h-[2px] bg-current 
-                           transition-all duration-300 ease-in-out 
-                           group-hover:w-full"
+                className={`absolute left-0 bottom-[-2px] w-0 h-[2px] transition-all duration-300 ease-in-out group-hover:w-full ${
+                  resolvedTheme === "light" ? "bg-gray-900" : "bg-gray-100"
+                }`}
               />
             </Link>
           </NavbarItem>
@@ -174,7 +175,7 @@ export default function Menubar() {
             06 51 27 17 49
           </Link>
         </NavbarItem>
-        <NavbarItem className="hidden lg:flex">
+        <NavbarItem className="hidden md:flex">
           <ThemeSwitch />
         </NavbarItem>
       </NavbarContent>
