@@ -1,8 +1,8 @@
 'use client';
 
-import { useEffect, useState } from 'react';
-import Image from 'next/image';
 import { useTheme } from "next-themes";
+import { useState, useEffect } from 'react';
+import Image from 'next/image';
 
 type Photo = {
   id: number;
@@ -12,14 +12,11 @@ type Photo = {
 };
 
 export default function Galerie() {
+  const { resolvedTheme } = useTheme();
   const [photos, setPhotos] = useState<Photo[]>([]);
   const [error, setError] = useState<string | null>(null);
   const [selectedPhoto, setSelectedPhoto] = useState<Photo | null>(null);
-  const { resolvedTheme } = useTheme();
-
-  useEffect(() => {
-    fetchPhotos();
-  }, []);
+  const [mounted, setMounted] = useState(false); 
 
   const fetchPhotos = async () => {
     try {
@@ -37,6 +34,16 @@ export default function Galerie() {
       setPhotos([]);
     }
   };
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  useEffect(() => {
+    fetchPhotos();
+  }, []);
+
+  if (!mounted) return null;
 
   if (error) {
     return (
