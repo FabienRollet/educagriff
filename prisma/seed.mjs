@@ -332,9 +332,9 @@ async function main() {
 
   for (const service of allServices) {
     try {
-      await prisma.price.create({
+    await prisma.price.create({
         data: service
-      });
+    });
       insertedCount++;
     } catch (error) {
       console.error(`Erreur lors de l'insertion de "${service.productName}" :`, error.message);
