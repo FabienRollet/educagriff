@@ -13,6 +13,8 @@ export default function footer() {
             Educateur comportementaliste canin et félin
             <br />
             N° SIRET : 939 104 220 000 16
+            <br />
+            <a href="/mentionLegales" className="underline">Mentions légales</a>
           </p>
         </li>
         <li className="text-xl flex flex-col gap-6 pb-5">
