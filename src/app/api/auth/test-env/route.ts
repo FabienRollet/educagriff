@@ -1,7 +1,7 @@
 import { NextResponse } from 'next/server';
 import bcrypt from 'bcrypt';
 
-export async function GET(request: Request) {
+export async function GET() {
   // Retourne les informations de debug (uniquement en développement)
   if (process.env.NODE_ENV !== 'development') {
     return NextResponse.json({ message: 'Route non disponible en production' }, { status: 403 });
