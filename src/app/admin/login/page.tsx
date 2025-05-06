@@ -103,7 +103,7 @@ export default function AdminLogin() {
             }`}>
         <form onSubmit={handleSubmit} className="flex flex-col gap-4">
           <label htmlFor="password" className="font-medium">
-            Mot de passe
+            Mot de passe (0000)
           </label>
           <div className="relative">
             <input
