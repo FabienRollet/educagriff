@@ -1,38 +1,33 @@
 import { NextResponse } from 'next/server';
 import bcrypt from 'bcrypt';
+import { prisma } from '@/lib/prisma';
 
-// Cette route est un utilitaire de développement pour générer des hash de mot de passe
-// Ne devrait jamais être disponible en production
+export const runtime = 'nodejs';
 
 export async function POST(request: Request) {
-  // Vérifier qu'on est en environnement de développement
-  if (process.env.NODE_ENV !== 'development') {
-    return NextResponse.json(
-      { error: 'Cette route n\'est disponible qu\'en environnement de développement' },
-      { status: 403 }
-    );
-  }
-
   try {
     const { password } = await request.json();
-    
-    if (!password) {
-      return NextResponse.json(
-        { error: 'Mot de passe requis' },
-        { status: 400 }
-      );
+    if (!password || typeof password !== 'string' || password.length < 6) {
+      return NextResponse.json({ success: false, message: 'Mot de passe invalide' }, { status: 400 });
     }
 
-    // Générer un hash avec un facteur de coût de 10
-    const saltRounds = 10;
-    const hash = await bcrypt.hash(password, saltRounds);
-    
-    return NextResponse.json({ hash }, { status: 200 });
+    const saltRounds = 12;
+    const passwordHash = await bcrypt.hash(password, saltRounds);
+
+    const existing = await prisma.admin.findFirst();
+    if (existing) {
+      await prisma.admin.update({ where: { id: existing.id }, data: { passwordHash } });
+    } else {
+      await prisma.admin.create({ data: { passwordHash } });
+    }
+
+    return NextResponse.json({ success: true });
   } catch (error) {
-    console.error('Erreur lors de la génération du hash:', error);
-    return NextResponse.json(
-      { error: 'Erreur serveur' },
-      { status: 500 }
-    );
+    const message = error instanceof Error ? error.message : 'Erreur serveur';
+    if (process.env.NODE_ENV !== 'production') {
+      console.error('POST /api/auth/hash-password error:', error);
+      return NextResponse.json({ success: false, message, stack: (error as Error)?.stack }, { status: 500 });
+    }
+    return NextResponse.json({ success: false, message: 'Erreur serveur' }, { status: 500 });
   }
-} 
+}

@@ -2,7 +2,6 @@
 
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
-import Cookies from 'js-cookie';
 import { useTheme } from "next-themes";
 
 export default function AdminLogin() {
@@ -53,15 +52,18 @@ export default function AdminLogin() {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({ password }),
+        credentials: 'include',
       });
       
       const data = await response.json();
       
       if (data.success) {
-        // Stocker l'authentification dans un cookie
-        Cookies.set('adminAuth', 'true', { expires: 1 }); // Expire dans 1 jour
-        router.push('/admin/dashboard');
-        router.refresh(); // Forcer le rafraîchissement de la page
+        // Redirection directe - le middleware se chargera de vérifier l'auth
+        console.log('Login successful, redirecting...');
+        // Petit délai pour s'assurer que les cookies sont définis
+        setTimeout(() => {
+          router.push('/admin/dashboard');
+        }, 100);
       } else {
         setError(data.message || 'Erreur d\'authentification');
         setCountdown(3);
@@ -103,7 +105,7 @@ export default function AdminLogin() {
             }`}>
         <form onSubmit={handleSubmit} className="flex flex-col gap-4">
           <label htmlFor="password" className="font-medium">
-            Mot de passe (0000)
+            Mot de passe
           </label>
           <div className="relative">
             <input

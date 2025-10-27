@@ -121,7 +121,7 @@ export default function TarifsChats() {
         );
       })}
       <p className="text-center mt-4 w-full">
-        Frais kilométriques offerts pour les premiers clients
+        Frais kilométriques offerts.
       </p>
     </section>
   );

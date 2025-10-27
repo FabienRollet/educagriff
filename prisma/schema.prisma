@@ -46,9 +46,11 @@ model Photo {
 }
 
 model Question {
-  id      Int             @id @default(autoincrement())
-  text    String
-  options QuestionOption[]
+  id        Int             @id @default(autoincrement())
+  text      String
+  options   QuestionOption[]
+  createdAt DateTime        @default(now())
+  updatedAt DateTime        @updatedAt
 }
 
 model QuestionOption {
@@ -58,4 +60,11 @@ model QuestionOption {
   result        String?
   question      Question  @relation(fields: [questionId], references: [id], onDelete: Cascade)
   questionId    Int
+}
+
+model Admin {
+  id           Int      @id @default(autoincrement())
+  passwordHash String
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
 }
