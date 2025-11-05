@@ -1,6 +1,12 @@
-// app/api/quiz/route.js ou app/api/quiz/route.ts
+// app/api/quiz/route.ts
 import { NextResponse } from 'next/server';
-import { prisma } from '@/lib/prisma'; // Ajustez le chemin selon votre structure
+import { prisma } from '@/lib/prisma';
+
+interface InvalidNextQuestionId {
+  questionId: number;
+  optionId: number;
+  nextQuestionId: number;
+}
 
 export async function GET() {
   try {
@@ -25,7 +31,7 @@ export async function GET() {
 
     // Vérifiez la validité des nextQuestionId
     const questionIds = new Set(questions.map(q => q.id));
-    const invalidNextQuestionIds = [];
+    const invalidNextQuestionIds: InvalidNextQuestionId[] = [];
     
     questions.forEach(q => {
       q.options.forEach(option => {

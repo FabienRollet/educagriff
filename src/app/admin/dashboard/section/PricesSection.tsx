@@ -2,8 +2,8 @@
 
 import { useState } from 'react';
 import { Price, NewPrice } from '../types';
-import { PriceItem } from '../items/PriceItem';
-import { PriceForm } from '../forms/PriceForm';
+import { PriceItem } from '../item/PriceItem';
+import { PriceForm } from '../forms/PriceFrom';
 import { CollapsibleSection } from '../ui/CollapsibleSection';
 
 interface PricesSectionProps {

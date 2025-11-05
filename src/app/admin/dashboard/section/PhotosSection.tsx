@@ -1,7 +1,7 @@
 'use client';
 
 import { Photo } from '../types';
-import { PhotoItem } from '../items/PhotoItem';
+import { PhotoItem } from '../item/PhotoItem';
 import { CollapsibleSection } from '../ui/CollapsibleSection';
 
 interface PhotosSectionProps {

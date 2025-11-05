@@ -5,11 +5,12 @@ import { Prisma } from '@prisma/client';
 // GET /api/prices/[id]
 export async function GET(
   request: Request,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
+    const { id } = await params;
     const price = await prisma.price.findUnique({
-      where: { id: parseInt(params.id) },
+      where: { id: parseInt(id) },
     });
     if (!price) {
       return NextResponse.json({ error: 'Prix non trouvé' }, { status: 404 });
@@ -24,12 +25,13 @@ export async function GET(
 // PUT /api/prices/[id]
 export async function PUT(
   request: Request,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
+    const { id } = await params;
     const body = await request.json();
     const price = await prisma.price.update({
-      where: { id: parseInt(params.id) },
+      where: { id: parseInt(id) },
       data: {
         productName: body.productName,
         price: body.price,
@@ -50,15 +52,16 @@ export async function PUT(
 // DELETE /api/prices/[id]
 export async function DELETE(
   request: Request,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
+    const { id } = await params;
     await prisma.price.delete({
-      where: { id: parseInt(params.id) },
+      where: { id: parseInt(id) },
     });
     return NextResponse.json({ message: 'Prix supprimé avec succès' });
   } catch (error: Error | unknown) {
     console.error('Erreur lors de la suppression du prix:', error);
     return NextResponse.json({ error: 'Erreur lors de la suppression du prix' }, { status: 500 });
   }
-} 
+}
