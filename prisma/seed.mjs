@@ -1,4 +1,4 @@
-import { PrismaClient } from '@prisma/client';
+import { PrismaClient } from "@prisma/client";
 
 const prisma = new PrismaClient();
 
@@ -7,8 +7,8 @@ async function seedQuestions() {
     // Nettoyez d'abord les données existantes pour éviter les doublons
     await prisma.questionOption.deleteMany();
     await prisma.question.deleteMany();
-    
-    console.log('Base de données nettoyée');
+
+    console.log("Base de données nettoyée");
 
     // Question 1: Vous recherchez de l'aide pour
     await prisma.question.create({
@@ -20,28 +20,65 @@ async function seedQuestions() {
             {
               text: "Votre chien",
               nextQuestionId: 2,
-              result: null
+              result: null,
             },
             {
               text: "Votre chat",
               nextQuestionId: 5,
-              result: null
+              result: null,
             },
             {
               text: "Les deux",
               nextQuestionId: 8,
-              result: null
+              result: null,
             },
             {
               text: "Autre",
               nextQuestionId: null,
-              result: "Nous contacter"
-            }
-          ]
-        }
-      }
+              result: `
+    <div>
+      <p>
+        Votre résultat de quiz indique une situation très particulière qui est impossible à classer en l’état.
+
+      </p>
+<br/>
+      <p>
+        Je vous invite à détailler votre situation le plus précisément possible.
+        Toutes les informations que vous me transmettrez me permettront de mieux visualiser
+        la problématique que vous rencontrez afin de répondre à votre demande le plus efficacement possible.
+      </p>
+<br/>
+      <p>
+        Après avoir rempli et rédigé toutes les informations qui vous semblent importantes,
+        n’oubliez pas d’inscrire un moyen de communication afin que je puisse vous recontacter
+        dans les plus brefs délais (email, numéro de téléphone, réseaux sociaux).
+      </p>
+<br/>
+      <p>
+        Une fois le formulaire complété, cliquez sur le bouton
+        <strong>“Envoyer le formulaire”</strong>.
+      </p>
+<br/>
+      <p>
+        Pour plus de renseignements, n'hésitez pas à me recontacter :
+      </p>
+
+      <ul>
+        <li>📞 <strong>Téléphone :</strong> 06 51 27 17 49</li>
+        <li>📧 <strong>Email :</strong> <a href="mailto:educagriff@gmail.com">educagriff@gmail.com</a></li>
+      </ul>
+  <br/> <br/>
+      <p>
+        Merci d’avoir participé à ce quiz.
+      </p>
+    </div>
+  `,
+            },
+          ],
+        },
+      },
     });
-    console.log('Question 1 créée');
+    console.log("Question 1 créée");
 
     // Question 2: Vous recherchez de l'aide pour (chien)
     await prisma.question.create({
@@ -53,28 +90,65 @@ async function seedQuestions() {
             {
               text: "Votre chiot",
               nextQuestionId: 3,
-              result: null
+              result: null,
             },
             {
               text: "Votre chien adulte",
               nextQuestionId: 3,
-              result: null
+              result: null,
             },
             {
               text: "Votre chien sénior",
               nextQuestionId: 3,
-              result: null
+              result: null,
             },
             {
               text: "Autre",
               nextQuestionId: null,
-              result: "Nous contacter"
-            }
-          ]
-        }
-      }
+              result: `
+    <div>
+      <p>
+        Votre résultat de quiz indique une situation très particulière qui est impossible à classer en l’état.
+
+      </p>
+<br/>
+      <p>
+        Je vous invite à détailler votre situation le plus précisément possible.
+        Toutes les informations que vous me transmettrez me permettront de mieux visualiser
+        la problématique que vous rencontrez afin de répondre à votre demande le plus efficacement possible.
+      </p>
+<br/>
+      <p>
+        Après avoir rempli et rédigé toutes les informations qui vous semblent importantes,
+        n’oubliez pas d’inscrire un moyen de communication afin que je puisse vous recontacter
+        dans les plus brefs délais (email, numéro de téléphone, réseaux sociaux).
+      </p>
+<br/>
+      <p>
+        Une fois le formulaire complété, cliquez sur le bouton
+        <strong>“Envoyer le formulaire”</strong>.
+      </p>
+<br/>
+      <p>
+        Pour plus de renseignements, n'hésitez pas à me recontacter :
+      </p>
+
+      <ul>
+        <li>📞 <strong>Téléphone :</strong> 06 51 27 17 49</li>
+        <li>📧 <strong>Email :</strong> <a href="mailto:educagriff@gmail.com">educagriff@gmail.com</a></li>
+      </ul>
+  <br/> <br/>
+      <p>
+        Merci d’avoir participé à ce quiz.
+      </p>
+    </div>
+  `,
+            },
+          ],
+        },
+      },
     });
-    console.log('Question 2 créée');
+    console.log("Question 2 créée");
 
     // Question 3: Vous recherchez (pour chien)
     await prisma.question.create({
@@ -86,28 +160,129 @@ async function seedQuestions() {
             {
               text: "Quelqu'un pour s'occuper de votre chien",
               nextQuestionId: null,
-              result: "Prestation : Petsitter chien"
+              result: `
+  <div>
+    <p>
+      Votre résultat de quiz indique que vous recherchez un <strong>service de petsitting (dogsitting)</strong>.
+    </p>
+<br/>
+    <p>
+      Vous trouverez toutes les prestations liées à votre résultat dans un tableau récapitulatif ci-dessous :
+    </p>
+<br/>
+      <table class="rounded-2xl mx-auto mx-auto mx-auto mx-auto mx-auto mx-auto mx-auto mx-auto mx-auto overflow-hidden shadow-lg transition-colors duration-300 bg-white text-gray-800" style="opacity: 1; transform: none;"><thead><tr><th colspan="2" class="text-2xl font-bold text-center p-4 bg-orange-100">Dogsitting</th></tr></thead><tbody><tr><td class="py-2 px-6 border-b border-gray-700"><div class="flex items-center gap-2">Pré-visite (déduite sur la première prestation)</div></td><td class="py-2 px-6 border-b border-gray-700">9€</td></tr><tr><td class="py-2 px-6 border-b border-gray-700"><div class="flex items-center gap-2">Visite à domicile 30min | 45min | 1h</div></td><td class="py-2 px-6 border-b border-gray-700">15€</td></tr><tr><td class="py-2 px-6 border-b border-gray-700"><div class="flex items-center gap-2">Balade hygiénique 30min</div></td><td class="py-2 px-6 border-b border-gray-700">15€</td></tr><tr><td class="py-2 px-6 border-b border-gray-700"><div class="flex items-center gap-2">Balade éducative 1h</div></td><td class="py-2 px-6 border-b border-gray-700">23€</td></tr><tr><td class="py-2 px-6 border-b border-gray-700"><div class="flex items-center gap-2">Forfait semaine</div></td><td class="py-2 px-6 border-b border-gray-700">Sur devis</td></tr><tr><td class="py-2 px-6 border-b border-gray-700"><div class="flex items-center gap-2">Forfait vacances (plus de 3 jours)</div></td><td class="py-2 px-6 border-b border-gray-700">Sur devis</td></tr><tr><td class="py-2 px-6 border-b border-gray-700"><div class="flex items-center gap-2">Animal supplémentaire</div></td><td class="py-2 px-6 border-b border-gray-700">5€</td></tr><tr><td class="py-2 px-6 border-b border-gray-700"><div class="flex items-center gap-2">Amener chez le vétérinaire</div></td><td class="py-2 px-6 border-b border-gray-700">Sur devis</td></tr></tbody></table>
+<br/>
+    <p>
+      Si vous ne trouvez pas la prestation que vous recherchez, ou pour plus d'informations, je vous invite à me contacter :
+    </p>
+<br/>
+    <ul>
+      <li>📞 <strong>Téléphone :</strong> 06 51 27 17 49</li>
+      <li>📧 <strong>Email :</strong> <a href="mailto:educagriff@gmail.com">educagriff@gmail.com</a></li>
+    </ul>
+<br/>
+    <p>
+      Vous pouvez également remplir le formulaire <strong>"Nous contacter"</strong> afin de détailler votre situation le plus précisément possible.
+      Toutes les informations que vous me transmettrez me permettront de mieux visualiser la problématique que vous rencontrez
+      afin de répondre à votre demande le plus efficacement possible.
+    </p>
+<br/><br/>
+    <p>
+      Merci d’avoir participé à ce quiz.
+    </p>
+  </div>
+`,
             },
             {
               text: "Éduquer votre chien",
               nextQuestionId: null,
-              result: "Prestation : Éducation chien"
+              result: `
+  <div>
+    <p>
+      Votre résultat de quiz indique que vous recherchez un <strong>service d’éducation pour chien</strong>.
+    </p>
+<br/>
+    <p>
+      Vous trouverez toutes les prestations liées à votre résultat dans un tableau récapitulatif ci-dessous :
+    </p>
+<br/>
+    <p>
+      <table class="rounded-2xl mx-auto mx-auto mx-auto mx-auto mx-auto mx-auto mx-auto mx-auto overflow-hidden shadow-lg transition-colors duration-300 bg-white text-gray-800" style="opacity: 1; transform: none;"><thead><tr><th colspan="2" class="text-2xl font-bold text-center p-4 bg-orange-100">Dressage &amp; Éducation</th></tr></thead><tbody><tr><td class="py-2 px-6 border-b border-gray-700"><div class="flex items-center gap-2">Bilan comportemental</div></td><td class="py-2 px-6 border-b border-gray-700">55€</td></tr><tr><td class="py-2 px-6 border-b border-gray-700"><div class="flex items-center gap-2">Séance unique renouvelable</div></td><td class="py-2 px-6 border-b border-gray-700">50€</td></tr><tr><td class="py-2 px-6 border-b border-gray-700"><div class="flex items-center gap-2">Forfait 5 séances</div></td><td class="py-2 px-6 border-b border-gray-700">240€</td></tr><tr><td class="py-2 px-6 border-b border-gray-700"><div class="flex items-center gap-2">Forfait 10 séances</div></td><td class="py-2 px-6 border-b border-gray-700">460€</td></tr><tr><td class="py-2 px-6 border-b border-gray-700"><div class="flex items-center gap-2">Cours d'éveil chiot</div></td><td class="py-2 px-6 border-b border-gray-700">50€</td></tr><tr><td class="py-2 px-6 border-b border-gray-700"><div class="flex items-center gap-2">Désensibilisation muselière</div></td><td class="py-2 px-6 border-b border-gray-700">55€</td></tr><tr><td class="py-2 px-6 border-b border-gray-700"><div class="flex items-center gap-2">Balade éducative en groupe (sous condition)</div></td><td class="py-2 px-6 border-b border-gray-700">15€</td></tr></tbody></table>
+    </p>
+<br/>
+    <p>
+      Si vous ne trouvez pas la prestation que vous recherchez, ou pour plus d'informations, je vous invite à me contacter :
+    </p>
+<br/>
+    <ul>
+      <li>📞 <strong>Téléphone :</strong> 06 51 27 17 49</li>
+      <li>📧 <strong>Email :</strong> <a href="mailto:educagriff@gmail.com">educagriff@gmail.com</a></li>
+    </ul>
+<br/>
+    <p>
+      Vous pouvez également remplir le formulaire <strong>"Nous contacter"</strong> afin de détailler votre situation le plus précisément possible.
+      Toutes les informations que vous me transmettrez me permettront de mieux visualiser la problématique que vous rencontrez
+      afin de répondre à votre demande le plus efficacement possible.
+    </p>
+<br/><br/>
+    <p>
+      Merci d’avoir participé à ce quiz.
+    </p>
+  </div>
+`,
             },
             {
               text: "Vous rencontrez des problèmes avec votre chien",
               nextQuestionId: 4,
-              result: null
+              result: null,
             },
             {
               text: "Autre",
               nextQuestionId: null,
-              result: "Nous contacter"
-            }
-          ]
-        }
-      }
+              result: `
+    <div>
+      <p>
+        Votre résultat de quiz indique une situation très particulière qui est impossible à classer en l’état.
+
+      </p>
+<br/>
+      <p>
+        Je vous invite à détailler votre situation le plus précisément possible.
+        Toutes les informations que vous me transmettrez me permettront de mieux visualiser
+        la problématique que vous rencontrez afin de répondre à votre demande le plus efficacement possible.
+      </p>
+<br/>
+      <p>
+        Après avoir rempli et rédigé toutes les informations qui vous semblent importantes,
+        n’oubliez pas d’inscrire un moyen de communication afin que je puisse vous recontacter
+        dans les plus brefs délais (email, numéro de téléphone, réseaux sociaux).
+      </p>
+<br/>
+      <p>
+        Une fois le formulaire complété, cliquez sur le bouton
+        <strong>“Envoyer le formulaire”</strong>.
+      </p>
+<br/>
+      <p>
+        Pour plus de renseignements, n'hésitez pas à me recontacter :
+      </p>
+
+      <ul>
+        <li>📞 <strong>Téléphone :</strong> 06 51 27 17 49</li>
+        <li>📧 <strong>Email :</strong> <a href="mailto:educagriff@gmail.com">educagriff@gmail.com</a></li>
+      </ul>
+  <br/> <br/>
+      <p>
+        Merci d’avoir participé à ce quiz.
+      </p>
+    </div>
+  `,
+            },
+          ],
+        },
+      },
     });
-    console.log('Question 3 créée');
+    console.log("Question 3 créée");
 
     // Question 4: Problème de (chien)
     await prisma.question.create({
@@ -119,28 +294,164 @@ async function seedQuestions() {
             {
               text: "Comportement",
               nextQuestionId: null,
-              result: "Prestation : Comportementaliste chien"
+              result: `
+  <div>
+    <p>
+      Votre résultat de quiz indique que vous recherchez un <strong>service de comportementaliste pour chien</strong>.
+    </p>
+<br/>
+    <p>
+      Vous trouverez toutes les prestations liées à votre résultat dans un tableau récapitulatif ci-dessous :
+    </p>
+<br/>
+    <p>
+      <table class="rounded-2xl mx-auto mx-auto mx-auto mx-auto mx-auto mx-auto mx-auto mx-auto overflow-hidden shadow-lg transition-colors duration-300 bg-white text-gray-800" style="opacity: 1; transform: none;"><thead><tr><th colspan="2" class="text-2xl font-bold text-center p-4 bg-orange-100">Rééducation &amp; Comportementalisme</th></tr></thead><tbody><tr><td class="py-2 px-6 border-b border-gray-700"><div class="flex items-center gap-2">Bilan comportemental + 1er diagnostic</div></td><td class="py-2 px-6 border-b border-gray-700">70€</td></tr><tr><td class="py-2 px-6 border-b border-gray-700"><div class="flex items-center gap-2">Séance unique renouvelable</div></td><td class="py-2 px-6 border-b border-gray-700">65€</td></tr><tr><td class="py-2 px-6 border-b border-gray-700"><div class="flex items-center gap-2">Cours collectif (sous condition)</div></td><td class="py-2 px-6 border-b border-gray-700">Sur devis</td></tr><tr><td class="py-2 px-6 border-b border-gray-700"><div class="flex items-center gap-2">Cours socialisation (sous condition)</div></td><td class="py-2 px-6 border-b border-gray-700">65€</td></tr></tbody></table>
+    </p>
+<br/>
+    <p>
+      Si vous ne trouvez pas la prestation que vous recherchez, ou pour plus d'informations, je vous invite à me contacter :
+    </p>
+<br/>
+    <ul>
+      <li>📞 <strong>Téléphone :</strong> 06 51 27 17 49</li>
+      <li>📧 <strong>Email :</strong> <a href="mailto:educagriff@gmail.com">educagriff@gmail.com</a></li>
+    </ul>
+<br/>
+    <p>
+      Vous pouvez également remplir le formulaire <strong>"Nous contacter"</strong> afin de détailler votre situation le plus précisément possible.
+      Toutes les informations que vous me transmettrez me permettront de mieux visualiser la problématique que vous rencontrez
+      afin de répondre à votre demande le plus efficacement possible.
+    </p>
+<br/><br/>
+    <p>
+      Merci d’avoir participé à ce quiz.
+    </p>
+  </div>
+`,
             },
             {
               text: "Lui apprendre des ordres",
               nextQuestionId: null,
-              result: "Prestation : Éducation chien"
+              result: `
+  <div>
+    <p>
+      Votre résultat de quiz indique que vous recherchez un <strong>service d’éducation pour chien</strong>.
+    </p>
+<br/>
+    <p>
+      Vous trouverez toutes les prestations liées à votre résultat dans un tableau récapitulatif ci-dessous :
+    </p>
+<br/>
+    <p>
+      <table class="rounded-2xl mx-auto mx-auto mx-auto mx-auto mx-auto mx-auto mx-auto mx-auto overflow-hidden shadow-lg transition-colors duration-300 bg-white text-gray-800" style="opacity: 1; transform: none;"><thead><tr><th colspan="2" class="text-2xl font-bold text-center p-4 bg-orange-100">Dressage &amp; Éducation</th></tr></thead><tbody><tr><td class="py-2 px-6 border-b border-gray-700"><div class="flex items-center gap-2">Bilan comportemental</div></td><td class="py-2 px-6 border-b border-gray-700">55€</td></tr><tr><td class="py-2 px-6 border-b border-gray-700"><div class="flex items-center gap-2">Séance unique renouvelable</div></td><td class="py-2 px-6 border-b border-gray-700">50€</td></tr><tr><td class="py-2 px-6 border-b border-gray-700"><div class="flex items-center gap-2">Forfait 5 séances</div></td><td class="py-2 px-6 border-b border-gray-700">240€</td></tr><tr><td class="py-2 px-6 border-b border-gray-700"><div class="flex items-center gap-2">Forfait 10 séances</div></td><td class="py-2 px-6 border-b border-gray-700">460€</td></tr><tr><td class="py-2 px-6 border-b border-gray-700"><div class="flex items-center gap-2">Cours d'éveil chiot</div></td><td class="py-2 px-6 border-b border-gray-700">50€</td></tr><tr><td class="py-2 px-6 border-b border-gray-700"><div class="flex items-center gap-2">Désensibilisation muselière</div></td><td class="py-2 px-6 border-b border-gray-700">55€</td></tr><tr><td class="py-2 px-6 border-b border-gray-700"><div class="flex items-center gap-2">Balade éducative en groupe (sous condition)</div></td><td class="py-2 px-6 border-b border-gray-700">15€</td></tr></tbody></table>
+    </p>
+<br/>
+    <p>
+      Si vous ne trouvez pas la prestation que vous recherchez, ou pour plus d'informations, je vous invite à me contacter :
+    </p>
+<br/>
+    <ul>
+      <li>📞 <strong>Téléphone :</strong> 06 51 27 17 49</li>
+      <li>📧 <strong>Email :</strong> <a href="mailto:educagriff@gmail.com">educagriff@gmail.com</a></li>
+    </ul>
+<br/>
+    <p>
+      Vous pouvez également remplir le formulaire <strong>"Nous contacter"</strong> afin de détailler votre situation le plus précisément possible.
+      Toutes les informations que vous me transmettrez me permettront de mieux visualiser la problématique que vous rencontrez
+      afin de répondre à votre demande le plus efficacement possible.
+    </p>
+<br/><br/>
+    <p>
+      Merci d’avoir participé à ce quiz.
+    </p>
+  </div>
+`,
             },
             {
               text: "Avec les congénères",
               nextQuestionId: null,
-              result: "Prestation : Comportementaliste chien"
+              result: `
+  <div>
+    <p>
+      Votre résultat de quiz indique que vous recherchez un <strong>service de comportementaliste pour chien</strong>.
+    </p>
+<br/>
+    <p>
+      Vous trouverez toutes les prestations liées à votre résultat dans un tableau récapitulatif ci-dessous :
+    </p>
+<br/>
+    <p>
+      <table class="rounded-2xl mx-auto mx-auto mx-auto mx-auto mx-auto mx-auto mx-auto mx-auto overflow-hidden shadow-lg transition-colors duration-300 bg-white text-gray-800" style="opacity: 1; transform: none;"><thead><tr><th colspan="2" class="text-2xl font-bold text-center p-4 bg-orange-100">Rééducation &amp; Comportementalisme</th></tr></thead><tbody><tr><td class="py-2 px-6 border-b border-gray-700"><div class="flex items-center gap-2">Bilan comportemental + 1er diagnostic</div></td><td class="py-2 px-6 border-b border-gray-700">70€</td></tr><tr><td class="py-2 px-6 border-b border-gray-700"><div class="flex items-center gap-2">Séance unique renouvelable</div></td><td class="py-2 px-6 border-b border-gray-700">65€</td></tr><tr><td class="py-2 px-6 border-b border-gray-700"><div class="flex items-center gap-2">Cours collectif (sous condition)</div></td><td class="py-2 px-6 border-b border-gray-700">Sur devis</td></tr><tr><td class="py-2 px-6 border-b border-gray-700"><div class="flex items-center gap-2">Cours socialisation (sous condition)</div></td><td class="py-2 px-6 border-b border-gray-700">65€</td></tr></tbody></table>
+    </p>
+<br/>
+    <p>
+      Si vous ne trouvez pas la prestation que vous recherchez, ou pour plus d'informations, je vous invite à me contacter :
+    </p>
+<br/>
+    <ul>
+      <li>📞 <strong>Téléphone :</strong> 06 51 27 17 49</li>
+      <li>📧 <strong>Email :</strong> <a href="mailto:educagriff@gmail.com">educagriff@gmail.com</a></li>
+    </ul>
+<br/>
+    <p>
+      Vous pouvez également remplir le formulaire <strong>"Nous contacter"</strong> afin de détailler votre situation le plus précisément possible.
+      Toutes les informations que vous me transmettrez me permettront de mieux visualiser la problématique que vous rencontrez
+      afin de répondre à votre demande le plus efficacement possible.
+    </p>
+<br/><br/>
+    <p>
+      Merci d’avoir participé à ce quiz.
+    </p>
+  </div>
+`,
             },
             {
               text: "Autre",
               nextQuestionId: null,
-              result: "Nous contacter"
-            }
-          ]
-        }
-      }
+              result: `
+    <div>
+      <p>
+        Votre résultat de quiz indique une situation très particulière qui est impossible à classer en l’état.
+
+      </p>
+<br/>
+      <p>
+        Je vous invite à détailler votre situation le plus précisément possible.
+        Toutes les informations que vous me transmettrez me permettront de mieux visualiser
+        la problématique que vous rencontrez afin de répondre à votre demande le plus efficacement possible.
+      </p>
+<br/>
+      <p>
+        Après avoir rempli et rédigé toutes les informations qui vous semblent importantes,
+        n’oubliez pas d’inscrire un moyen de communication afin que je puisse vous recontacter
+        dans les plus brefs délais (email, numéro de téléphone, réseaux sociaux).
+      </p>
+<br/>
+      <p>
+        Une fois le formulaire complété, cliquez sur le bouton
+        <strong>“Envoyer le formulaire”</strong>.
+      </p>
+<br/>
+      <p>
+        Pour plus de renseignements, n'hésitez pas à me recontacter :
+      </p>
+
+      <ul>
+        <li>📞 <strong>Téléphone :</strong> 06 51 27 17 49</li>
+        <li>📧 <strong>Email :</strong> <a href="mailto:educagriff@gmail.com">educagriff@gmail.com</a></li>
+      </ul>
+  <br/> <br/>
+      <p>
+        Merci d’avoir participé à ce quiz.
+      </p>
+    </div>
+  `,
+            },
+          ],
+        },
+      },
     });
-    console.log('Question 4 créée');
+    console.log("Question 4 créée");
 
     // Question 5: Vous recherchez de l'aide pour (chat)
     await prisma.question.create({
@@ -152,28 +463,65 @@ async function seedQuestions() {
             {
               text: "Votre chaton",
               nextQuestionId: 6,
-              result: null
+              result: null,
             },
             {
               text: "Votre chat adulte",
               nextQuestionId: 6,
-              result: null
+              result: null,
             },
             {
               text: "Votre chat sénior",
               nextQuestionId: 6,
-              result: null
+              result: null,
             },
             {
               text: "Autre",
               nextQuestionId: null,
-              result: "Nous contacter"
-            }
-          ]
-        }
-      }
+              result: `
+    <div>
+      <p>
+        Votre résultat de quiz indique une situation très particulière qui est impossible à classer en l’état.
+
+      </p>
+<br/>
+      <p>
+        Je vous invite à détailler votre situation le plus précisément possible.
+        Toutes les informations que vous me transmettrez me permettront de mieux visualiser
+        la problématique que vous rencontrez afin de répondre à votre demande le plus efficacement possible.
+      </p>
+<br/>
+      <p>
+        Après avoir rempli et rédigé toutes les informations qui vous semblent importantes,
+        n’oubliez pas d’inscrire un moyen de communication afin que je puisse vous recontacter
+        dans les plus brefs délais (email, numéro de téléphone, réseaux sociaux).
+      </p>
+<br/>
+      <p>
+        Une fois le formulaire complété, cliquez sur le bouton
+        <strong>“Envoyer le formulaire”</strong>.
+      </p>
+<br/>
+      <p>
+        Pour plus de renseignements, n'hésitez pas à me recontacter :
+      </p>
+
+      <ul>
+        <li>📞 <strong>Téléphone :</strong> 06 51 27 17 49</li>
+        <li>📧 <strong>Email :</strong> <a href="mailto:educagriff@gmail.com">educagriff@gmail.com</a></li>
+      </ul>
+  <br/> <br/>
+      <p>
+        Merci d’avoir participé à ce quiz.
+      </p>
+    </div>
+  `,
+            },
+          ],
+        },
+      },
     });
-    console.log('Question 5 créée');
+    console.log("Question 5 créée");
 
     // Question 6: Vous recherchez (pour chat)
     await prisma.question.create({
@@ -185,28 +533,132 @@ async function seedQuestions() {
             {
               text: "Quelqu'un pour s'occuper de votre chat",
               nextQuestionId: null,
-              result: "Prestation : Petsitter chat"
+              result: `
+  <div>
+    <p>
+      Votre résultat de quiz indique que vous recherchez un <strong>service de petsitting (catsitting)</strong>.
+    </p>
+<br/>
+    <p>
+      Vous trouverez toutes les prestations liées à votre résultat dans un tableau récapitulatif ci-dessous :
+    </p>
+<br/>
+    <p>
+      <table class="rounded-2xl mx-auto mx-auto mx-auto mx-auto mx-auto mx-auto mx-auto mx-auto overflow-hidden shadow-lg transition-colors duration-300 bg-white text-gray-800" style="opacity: 1; transform: none;"><thead><tr><th colspan="2" class="text-2xl font-bold text-center p-4 bg-orange-100">Catsitting</th></tr></thead><tbody><tr><td class="py-2 p-6 border-t border-gray-700"><div class="flex items-center gap-2">Pré-visite (déduite sur la première prestation)</div></td><td class="py-2 p-6 border-t border-gray-700">9€</td></tr><tr><td class="py-2 p-6 border-t border-gray-700"><div class="flex items-center gap-2">Visite à domicile 30min | 45min | 1h</div></td><td class="py-2 p-6 border-t border-gray-700">15€</td></tr><tr><td class="py-2 p-6 border-t border-gray-700"><div class="flex items-center gap-2">Forfait semaine</div></td><td class="py-2 p-6 border-t border-gray-700">Sur devis</td></tr><tr><td class="py-2 p-6 border-t border-gray-700"><div class="flex items-center gap-2">Forfait vacances (plus de 3 jours)</div></td><td class="py-2 p-6 border-t border-gray-700">Sur devis</td></tr><tr><td class="py-2 p-6 border-t border-gray-700"><div class="flex items-center gap-2">Animal supplémentaire</div></td><td class="py-2 p-6 border-t border-gray-700">5€</td></tr><tr><td class="py-2 p-6 border-t border-gray-700"><div class="flex items-center gap-2">Amener chez le vétérinaire</div></td><td class="py-2 p-6 border-t border-gray-700">Sur devis</td></tr></tbody></table>
+    </p>
+<br/>
+    <p>
+      Si vous ne trouvez pas la prestation que vous recherchez, ou pour plus d'informations, je vous invite à me contacter :
+    </p>
+<br/>
+    <ul>
+      <li>📞 <strong>Téléphone :</strong> 06 51 27 17 49</li>
+      <li>📧 <strong>Email :</strong> <a href="mailto:educagriff@gmail.com">educagriff@gmail.com</a></li>
+    </ul>
+<br/>
+    <p>
+      Vous pouvez également remplir le formulaire <strong>"Nous contacter"</strong> afin de détailler votre situation le plus précisément possible.
+      Toutes les informations que vous me transmettrez me permettront de mieux visualiser la problématique que vous rencontrez
+      afin de répondre à votre demande le plus efficacement possible.
+    </p>
+<br/><br/>
+    <p>
+      Merci d’avoir participé à ce quiz.
+    </p>
+  </div>
+`,
             },
             {
               text: "Éduquer votre chat",
               nextQuestionId: null,
-              result: "Prestation : Éducation chat"
+              result: `
+  <div>
+    <p>
+      Votre résultat de quiz indique que vous recherchez un <strong>service d’éducation pour chat</strong>.
+      Oui, on peut éduquer son chat, c’est possible !!
+    </p>
+<br/>
+    <p>
+      Vous trouverez toutes les prestations liées à votre résultat dans un tableau récapitulatif ci-dessous :
+    </p>
+<br/>
+    <p>
+      <table class="rounded-2xl mx-auto mx-auto mx-auto mx-auto mx-auto mx-auto mx-auto mx-auto overflow-hidden shadow-lg transition-colors duration-300 bg-white text-gray-800" style="opacity: 1; transform: none;"><thead><tr><th colspan="2" class="text-2xl font-bold text-center p-4 bg-orange-100">Dressage &amp; Éducation</th></tr></thead><tbody><tr><td class="py-2 p-6 border-t border-gray-700"><div class="flex items-center gap-2">Bilan comportemental</div></td><td class="py-2 p-6 border-t border-gray-700">55€</td></tr><tr><td class="py-2 p-6 border-t border-gray-700"><div class="flex items-center gap-2">Séance unique renouvelable</div></td><td class="py-2 p-6 border-t border-gray-700">50€</td></tr><tr><td class="py-2 p-6 border-t border-gray-700"><div class="flex items-center gap-2">Forfait 5 séances</div></td><td class="py-2 p-6 border-t border-gray-700">240€</td></tr><tr><td class="py-2 p-6 border-t border-gray-700"><div class="flex items-center gap-2">Forfait 10 séances</div></td><td class="py-2 p-6 border-t border-gray-700">460€</td></tr><tr><td class="py-2 p-6 border-t border-gray-700"><div class="flex items-center gap-2">Cours d'éveil chaton</div></td><td class="py-2 p-6 border-t border-gray-700">50€</td></tr><tr><td class="py-2 p-6 border-t border-gray-700"><div class="flex items-center gap-2">Sensibilisation comportementale en visio</div></td><td class="py-2 p-6 border-t border-gray-700">20€</td></tr></tbody></table>
+    </p>
+<br/>
+    <p>
+      Si vous ne trouvez pas la prestation que vous recherchez, ou pour plus d'informations, je vous invite à me contacter :
+    </p>
+<br/>
+    <ul>
+      <li>📞 <strong>Téléphone :</strong> 06 51 27 17 49</li>
+      <li>📧 <strong>Email :</strong> <a href="mailto:educagriff@gmail.com">educagriff@gmail.com</a></li>
+    </ul>
+<br/>
+    <p>
+      Vous pouvez également remplir le formulaire <strong>"Nous contacter"</strong> afin de détailler votre situation le plus précisément possible.
+      Toutes les informations que vous me transmettrez me permettront de mieux visualiser la problématique que vous rencontrez
+      afin de répondre à votre demande le plus efficacement possible.
+    </p>
+<br/><br/>
+    <p>
+      Merci d’avoir participé à ce quiz.
+    </p>
+  </div>
+`,
             },
             {
               text: "Vous rencontrez des problèmes avec votre chat",
               nextQuestionId: 7,
-              result: null
+              result: null,
             },
             {
               text: "Autre",
               nextQuestionId: null,
-              result: "Nous contacter"
-            }
-          ]
-        }
-      }
+              result: `
+    <div>
+      <p>
+        Votre résultat de quiz indique une situation très particulière qui est impossible à classer en l’état.
+
+      </p>
+<br/>
+      <p>
+        Je vous invite à détailler votre situation le plus précisément possible.
+        Toutes les informations que vous me transmettrez me permettront de mieux visualiser
+        la problématique que vous rencontrez afin de répondre à votre demande le plus efficacement possible.
+      </p>
+<br/>
+      <p>
+        Après avoir rempli et rédigé toutes les informations qui vous semblent importantes,
+        n’oubliez pas d’inscrire un moyen de communication afin que je puisse vous recontacter
+        dans les plus brefs délais (email, numéro de téléphone, réseaux sociaux).
+      </p>
+<br/>
+      <p>
+        Une fois le formulaire complété, cliquez sur le bouton
+        <strong>“Envoyer le formulaire”</strong>.
+      </p>
+<br/>
+      <p>
+        Pour plus de renseignements, n'hésitez pas à me recontacter :
+      </p>
+
+      <ul>
+        <li>📞 <strong>Téléphone :</strong> 06 51 27 17 49</li>
+        <li>📧 <strong>Email :</strong> <a href="mailto:educagriff@gmail.com">educagriff@gmail.com</a></li>
+      </ul>
+  <br/> <br/>
+      <p>
+        Merci d’avoir participé à ce quiz.
+      </p>
+    </div>
+  `,
+            },
+          ],
+        },
+      },
     });
-    console.log('Question 6 créée');
+    console.log("Question 6 créée");
 
     // Question 7: Problème de (chat)
     await prisma.question.create({
@@ -218,28 +670,167 @@ async function seedQuestions() {
             {
               text: "Comportement",
               nextQuestionId: null,
-              result: "Prestation : Comportementaliste chat"
+              result: `
+  <div>
+    <p>
+      Votre résultat de quiz indique que vous recherchez un <strong>service d’éducation pour chat</strong>.
+      Oui, on peut éduquer son chat, c’est possible !!
+    </p>
+<br/>
+    <p>
+      Vous trouverez toutes les prestations liées à votre résultat dans un tableau récapitulatif ci-dessous :
+    </p>
+<br/>
+    <p>
+      <table class="rounded-2xl mx-auto mx-auto mx-auto mx-auto mx-auto mx-auto mx-auto mx-auto overflow-hidden shadow-lg transition-colors duration-300 bg-white text-gray-800" style="opacity: 1; transform: none;"><thead><tr><th colspan="2" class="text-2xl font-bold text-center p-4 bg-orange-100">Dressage &amp; Éducation</th></tr></thead><tbody><tr><td class="py-2 p-6 border-t border-gray-700"><div class="flex items-center gap-2">Bilan comportemental</div></td><td class="py-2 p-6 border-t border-gray-700">55€</td></tr><tr><td class="py-2 p-6 border-t border-gray-700"><div class="flex items-center gap-2">Séance unique renouvelable</div></td><td class="py-2 p-6 border-t border-gray-700">50€</td></tr><tr><td class="py-2 p-6 border-t border-gray-700"><div class="flex items-center gap-2">Forfait 5 séances</div></td><td class="py-2 p-6 border-t border-gray-700">240€</td></tr><tr><td class="py-2 p-6 border-t border-gray-700"><div class="flex items-center gap-2">Forfait 10 séances</div></td><td class="py-2 p-6 border-t border-gray-700">460€</td></tr><tr><td class="py-2 p-6 border-t border-gray-700"><div class="flex items-center gap-2">Cours d'éveil chaton</div></td><td class="py-2 p-6 border-t border-gray-700">50€</td></tr><tr><td class="py-2 p-6 border-t border-gray-700"><div class="flex items-center gap-2">Sensibilisation comportementale en visio</div></td><td class="py-2 p-6 border-t border-gray-700">20€</td></tr></tbody></table>
+    </p>
+<br/>
+    <p>
+      Si vous ne trouvez pas la prestation que vous recherchez, ou pour plus d'informations, je vous invite à me contacter :
+    </p>
+<br/>
+    <ul>
+      <li>📞 <strong>Téléphone :</strong> 06 51 27 17 49</li>
+      <li>📧 <strong>Email :</strong> <a href="mailto:educagriff@gmail.com">educagriff@gmail.com</a></li>
+    </ul>
+<br/>
+    <p>
+      Vous pouvez également remplir le formulaire <strong>"Nous contacter"</strong> afin de détailler votre situation le plus précisément possible.
+      Toutes les informations que vous me transmettrez me permettront de mieux visualiser la problématique que vous rencontrez
+      afin de répondre à votre demande le plus efficacement possible.
+    </p>
+<br/><br/>
+    <p>
+      Merci d’avoir participé à ce quiz.
+    </p>
+  </div>
+`,
             },
             {
               text: "Lui apprendre des règles",
               nextQuestionId: null,
-              result: "Prestation : Éducation chat"
+              result: `
+  <div>
+    <p>
+      Votre résultat de quiz indique que vous recherchez un <strong>service d’éducation pour chat</strong>.
+      Oui, on peut éduquer son chat, c’est possible !!
+    </p>
+<br/>
+    <p>
+      Vous trouverez toutes les prestations liées à votre résultat dans un tableau récapitulatif ci-dessous :
+    </p>
+<br/>
+    <p>
+      <table class="rounded-2xl mx-auto mx-auto mx-auto mx-auto mx-auto mx-auto mx-auto mx-auto overflow-hidden shadow-lg transition-colors duration-300 bg-white text-gray-800" style="opacity: 1; transform: none;"><thead><tr><th colspan="2" class="text-2xl font-bold text-center p-4 bg-orange-100">Dressage &amp; Éducation</th></tr></thead><tbody><tr><td class="py-2 p-6 border-t border-gray-700"><div class="flex items-center gap-2">Bilan comportemental</div></td><td class="py-2 p-6 border-t border-gray-700">55€</td></tr><tr><td class="py-2 p-6 border-t border-gray-700"><div class="flex items-center gap-2">Séance unique renouvelable</div></td><td class="py-2 p-6 border-t border-gray-700">50€</td></tr><tr><td class="py-2 p-6 border-t border-gray-700"><div class="flex items-center gap-2">Forfait 5 séances</div></td><td class="py-2 p-6 border-t border-gray-700">240€</td></tr><tr><td class="py-2 p-6 border-t border-gray-700"><div class="flex items-center gap-2">Forfait 10 séances</div></td><td class="py-2 p-6 border-t border-gray-700">460€</td></tr><tr><td class="py-2 p-6 border-t border-gray-700"><div class="flex items-center gap-2">Cours d'éveil chaton</div></td><td class="py-2 p-6 border-t border-gray-700">50€</td></tr><tr><td class="py-2 p-6 border-t border-gray-700"><div class="flex items-center gap-2">Sensibilisation comportementale en visio</div></td><td class="py-2 p-6 border-t border-gray-700">20€</td></tr></tbody></table>
+    </p>
+<br/>
+    <p>
+      Si vous ne trouvez pas la prestation que vous recherchez, ou pour plus d'informations, je vous invite à me contacter :
+    </p>
+<br/>
+    <ul>
+      <li>📞 <strong>Téléphone :</strong> 06 51 27 17 49</li>
+      <li>📧 <strong>Email :</strong> <a href="mailto:educagriff@gmail.com">educagriff@gmail.com</a></li>
+    </ul>
+<br/>
+    <p>
+      Vous pouvez également remplir le formulaire <strong>"Nous contacter"</strong> afin de détailler votre situation le plus précisément possible.
+      Toutes les informations que vous me transmettrez me permettront de mieux visualiser la problématique que vous rencontrez
+      afin de répondre à votre demande le plus efficacement possible.
+    </p>
+<br/><br/>
+    <p>
+      Merci d’avoir participé à ce quiz.
+    </p>
+  </div>
+`,
             },
             {
               text: "Pour comprendre votre chat",
               nextQuestionId: null,
-              result: "Prestation : Comportementaliste chat"
+              result: `
+  <div>
+    <p>
+      Votre résultat de quiz indique que vous recherchez un <strong>service d’éducation pour chat</strong>.
+      Oui, on peut éduquer son chat, c’est possible !!
+    </p>
+<br/>
+    <p>
+      Vous trouverez toutes les prestations liées à votre résultat dans un tableau récapitulatif ci-dessous :
+    </p>
+<br/>
+    <p>
+      <table class="rounded-2xl mx-auto mx-auto mx-auto mx-auto mx-auto mx-auto mx-auto mx-auto overflow-hidden shadow-lg transition-colors duration-300 bg-white text-gray-800" style="opacity: 1; transform: none;"><thead><tr><th colspan="2" class="text-2xl font-bold text-center p-4 bg-orange-100">Dressage &amp; Éducation</th></tr></thead><tbody><tr><td class="py-2 p-6 border-t border-gray-700"><div class="flex items-center gap-2">Bilan comportemental</div></td><td class="py-2 p-6 border-t border-gray-700">55€</td></tr><tr><td class="py-2 p-6 border-t border-gray-700"><div class="flex items-center gap-2">Séance unique renouvelable</div></td><td class="py-2 p-6 border-t border-gray-700">50€</td></tr><tr><td class="py-2 p-6 border-t border-gray-700"><div class="flex items-center gap-2">Forfait 5 séances</div></td><td class="py-2 p-6 border-t border-gray-700">240€</td></tr><tr><td class="py-2 p-6 border-t border-gray-700"><div class="flex items-center gap-2">Forfait 10 séances</div></td><td class="py-2 p-6 border-t border-gray-700">460€</td></tr><tr><td class="py-2 p-6 border-t border-gray-700"><div class="flex items-center gap-2">Cours d'éveil chaton</div></td><td class="py-2 p-6 border-t border-gray-700">50€</td></tr><tr><td class="py-2 p-6 border-t border-gray-700"><div class="flex items-center gap-2">Sensibilisation comportementale en visio</div></td><td class="py-2 p-6 border-t border-gray-700">20€</td></tr></tbody></table>
+    </p>
+<br/>
+    <p>
+      Si vous ne trouvez pas la prestation que vous recherchez, ou pour plus d'informations, je vous invite à me contacter :
+    </p>
+<br/>
+    <ul>
+      <li>📞 <strong>Téléphone :</strong> 06 51 27 17 49</li>
+      <li>📧 <strong>Email :</strong> <a href="mailto:educagriff@gmail.com">educagriff@gmail.com</a></li>
+    </ul>
+<br/>
+    <p>
+      Vous pouvez également remplir le formulaire <strong>"Nous contacter"</strong> afin de détailler votre situation le plus précisément possible.
+      Toutes les informations que vous me transmettrez me permettront de mieux visualiser la problématique que vous rencontrez
+      afin de répondre à votre demande le plus efficacement possible.
+    </p>
+<br/><br/>
+    <p>
+      Merci d’avoir participé à ce quiz.
+    </p>
+  </div>
+`,
             },
             {
               text: "Autre",
               nextQuestionId: null,
-              result: "Nous contacter"
-            }
-          ]
-        }
-      }
+              result: `
+    <div>
+      <p>
+        Votre résultat de quiz indique une situation très particulière qui est impossible à classer en l’état.
+
+      </p>
+<br/>
+      <p>
+        Je vous invite à détailler votre situation le plus précisément possible.
+        Toutes les informations que vous me transmettrez me permettront de mieux visualiser
+        la problématique que vous rencontrez afin de répondre à votre demande le plus efficacement possible.
+      </p>
+<br/>
+      <p>
+        Après avoir rempli et rédigé toutes les informations qui vous semblent importantes,
+        n’oubliez pas d’inscrire un moyen de communication afin que je puisse vous recontacter
+        dans les plus brefs délais (email, numéro de téléphone, réseaux sociaux).
+      </p>
+<br/>
+      <p>
+        Une fois le formulaire complété, cliquez sur le bouton
+        <strong>“Envoyer le formulaire”</strong>.
+      </p>
+<br/>
+      <p>
+        Pour plus de renseignements, n'hésitez pas à me recontacter :
+      </p>
+
+      <ul>
+        <li>📞 <strong>Téléphone :</strong> 06 51 27 17 49</li>
+        <li>📧 <strong>Email :</strong> <a href="mailto:educagriff@gmail.com">educagriff@gmail.com</a></li>
+      </ul>
+  <br/> <br/>
+      <p>
+        Merci d’avoir participé à ce quiz.
+      </p>
+    </div>
+  `,
+            },
+          ],
+        },
+      },
     });
-    console.log('Question 7 créée');
+    console.log("Question 7 créée");
 
     // Question 8: Vous cherchez de l'aide pour (les deux)
     await prisma.question.create({
@@ -251,23 +842,60 @@ async function seedQuestions() {
             {
               text: "Des problèmes de sensibilisation",
               nextQuestionId: 9,
-              result: null
+              result: null,
             },
             {
               text: "Des problèmes d'agressivité",
               nextQuestionId: 11,
-              result: null
+              result: null,
             },
             {
               text: "Autre",
               nextQuestionId: null,
-              result: "Nous contacter"
-            }
-          ]
-        }
-      }
+              result: `
+    <div>
+      <p>
+        Votre résultat de quiz indique une situation très particulière qui est impossible à classer en l’état.
+
+      </p>
+<br/>
+      <p>
+        Je vous invite à détailler votre situation le plus précisément possible.
+        Toutes les informations que vous me transmettrez me permettront de mieux visualiser
+        la problématique que vous rencontrez afin de répondre à votre demande le plus efficacement possible.
+      </p>
+<br/>
+      <p>
+        Après avoir rempli et rédigé toutes les informations qui vous semblent importantes,
+        n’oubliez pas d’inscrire un moyen de communication afin que je puisse vous recontacter
+        dans les plus brefs délais (email, numéro de téléphone, réseaux sociaux).
+      </p>
+<br/>
+      <p>
+        Une fois le formulaire complété, cliquez sur le bouton
+        <strong>“Envoyer le formulaire”</strong>.
+      </p>
+<br/>
+      <p>
+        Pour plus de renseignements, n'hésitez pas à me recontacter :
+      </p>
+
+      <ul>
+        <li>📞 <strong>Téléphone :</strong> 06 51 27 17 49</li>
+        <li>📧 <strong>Email :</strong> <a href="mailto:educagriff@gmail.com">educagriff@gmail.com</a></li>
+      </ul>
+  <br/> <br/>
+      <p>
+        Merci d’avoir participé à ce quiz.
+      </p>
+    </div>
+  `,
+            },
+          ],
+        },
+      },
     });
-    console.log('Question 8 créée');
+    console.log("Question 8 créée");
 
     // Question 9: Vous avez des problèmes pour (sensibilisation)
     await prisma.question.create({
@@ -279,28 +907,65 @@ async function seedQuestions() {
             {
               text: "Sociabilisation entre les animaux en intérieur",
               nextQuestionId: 10,
-              result: null
+              result: null,
             },
             {
               text: "Sociabilisation en extérieur",
               nextQuestionId: 13,
-              result: null
+              result: null,
             },
             {
               text: "Changement de comportement",
               nextQuestionId: 14,
-              result: null
+              result: null,
             },
             {
               text: "Autre",
               nextQuestionId: null,
-              result: "Nous contacter"
-            }
-          ]
-        }
-      }
+              result: `
+    <div>
+      <p>
+        Votre résultat de quiz indique une situation très particulière qui est impossible à classer en l’état.
+
+      </p>
+<br/>
+      <p>
+        Je vous invite à détailler votre situation le plus précisément possible.
+        Toutes les informations que vous me transmettrez me permettront de mieux visualiser
+        la problématique que vous rencontrez afin de répondre à votre demande le plus efficacement possible.
+      </p>
+<br/>
+      <p>
+        Après avoir rempli et rédigé toutes les informations qui vous semblent importantes,
+        n’oubliez pas d’inscrire un moyen de communication afin que je puisse vous recontacter
+        dans les plus brefs délais (email, numéro de téléphone, réseaux sociaux).
+      </p>
+<br/>
+      <p>
+        Une fois le formulaire complété, cliquez sur le bouton
+        <strong>“Envoyer le formulaire”</strong>.
+      </p>
+<br/>
+      <p>
+        Pour plus de renseignements, n'hésitez pas à me recontacter :
+      </p>
+
+      <ul>
+        <li>📞 <strong>Téléphone :</strong> 06 51 27 17 49</li>
+        <li>📧 <strong>Email :</strong> <a href="mailto:educagriff@gmail.com">educagriff@gmail.com</a></li>
+      </ul>
+  <br/> <br/>
+      <p>
+        Merci d’avoir participé à ce quiz.
+      </p>
+    </div>
+  `,
+            },
+          ],
+        },
+      },
     });
-    console.log('Question 9 créée');
+    console.log("Question 9 créée");
 
     // Question 10: En intérieur
     await prisma.question.create({
@@ -312,28 +977,173 @@ async function seedQuestions() {
             {
               text: "Votre chien pose des problèmes dans la sociabilisation de votre chat",
               nextQuestionId: null,
-              result: "Prestation : Comportementaliste canin et félin"
+              result: `
+  <div>
+    <p>
+      Votre résultat de quiz indique que vous recherchez un <strong>service de comportementaliste pour chien et chat</strong>, une situation très particulière.
+    </p>
+<br/>
+    <p>
+        Je vous invite à détailler votre situation le plus précisément possible.
+        Toutes les informations que vous me transmettrez me permettront de mieux visualiser
+        la problématique que vous rencontrez afin de répondre à votre demande le plus efficacement possible.
+      </p>
+<br/>
+      <p>
+        Après avoir rempli et rédigé toutes les informations qui vous semblent importantes,
+        n’oubliez pas d’inscrire un moyen de communication afin que je puisse vous recontacter
+        dans les plus brefs délais (email, numéro de téléphone, réseaux sociaux).
+      </p>
+<br/>
+      <p>
+        Une fois le formulaire complété, cliquez sur le bouton
+        <strong>“Envoyer le formulaire”</strong>.
+      </p>
+<br/>
+      <p>
+        Pour plus de renseignements, n'hésitez pas à me recontacter :
+      </p>
+
+      <ul>
+        <li>📞 <strong>Téléphone :</strong> 06 51 27 17 49</li>
+        <li>📧 <strong>Email :</strong> <a href="mailto:educagriff@gmail.com">educagriff@gmail.com</a></li>
+      </ul>
+  <br/> <br/>
+      <p>
+        Merci d’avoir participé à ce quiz.
+      </p>
+    </div>
+  `,
             },
             {
               text: "Votre chat pose des problèmes dans la sociabilisation de votre chien",
               nextQuestionId: null,
-              result: "Prestation : Comportementaliste canin et félin"
+              result: `
+  <div>
+    <p>
+      Votre résultat de quiz indique que vous recherchez un <strong>service de comportementaliste pour chien et chat</strong>, une situation très particulière.
+    </p>
+<br/>
+    <p>
+        Je vous invite à détailler votre situation le plus précisément possible.
+        Toutes les informations que vous me transmettrez me permettront de mieux visualiser
+        la problématique que vous rencontrez afin de répondre à votre demande le plus efficacement possible.
+      </p>
+<br/>
+      <p>
+        Après avoir rempli et rédigé toutes les informations qui vous semblent importantes,
+        n’oubliez pas d’inscrire un moyen de communication afin que je puisse vous recontacter
+        dans les plus brefs délais (email, numéro de téléphone, réseaux sociaux).
+      </p>
+<br/>
+      <p>
+        Une fois le formulaire complété, cliquez sur le bouton
+        <strong>“Envoyer le formulaire”</strong>.
+      </p>
+<br/>
+      <p>
+        Pour plus de renseignements, n'hésitez pas à me recontacter :
+      </p>
+
+      <ul>
+        <li>📞 <strong>Téléphone :</strong> 06 51 27 17 49</li>
+        <li>📧 <strong>Email :</strong> <a href="mailto:educagriff@gmail.com">educagriff@gmail.com</a></li>
+      </ul>
+  <br/> <br/>
+      <p>
+        Merci d’avoir participé à ce quiz.
+      </p>
+    </div>
+  `,
             },
             {
               text: "Les deux",
               nextQuestionId: null,
-              result: "Prestation : Comportementaliste canin et félin"
+              result: `
+  <div>
+    <p>
+      Votre résultat de quiz indique que vous recherchez un <strong>service de comportementaliste pour chien et chat</strong>, une situation très particulière.
+    </p>
+<br/>
+    <p>
+        Je vous invite à détailler votre situation le plus précisément possible.
+        Toutes les informations que vous me transmettrez me permettront de mieux visualiser
+        la problématique que vous rencontrez afin de répondre à votre demande le plus efficacement possible.
+      </p>
+<br/>
+      <p>
+        Après avoir rempli et rédigé toutes les informations qui vous semblent importantes,
+        n’oubliez pas d’inscrire un moyen de communication afin que je puisse vous recontacter
+        dans les plus brefs délais (email, numéro de téléphone, réseaux sociaux).
+      </p>
+<br/>
+      <p>
+        Une fois le formulaire complété, cliquez sur le bouton
+        <strong>“Envoyer le formulaire”</strong>.
+      </p>
+<br/>
+      <p>
+        Pour plus de renseignements, n'hésitez pas à me recontacter :
+      </p>
+
+      <ul>
+        <li>📞 <strong>Téléphone :</strong> 06 51 27 17 49</li>
+        <li>📧 <strong>Email :</strong> <a href="mailto:educagriff@gmail.com">educagriff@gmail.com</a></li>
+      </ul>
+  <br/> <br/>
+      <p>
+        Merci d’avoir participé à ce quiz.
+      </p>
+    </div>
+  `,
             },
             {
               text: "Cas particuliers",
               nextQuestionId: null,
-              result: "Nous contacter"
-            }
-          ]
-        }
-      }
+              result: `
+    <div>
+      <p>
+        Votre résultat de quiz indique une situation très particulière qui est impossible à classer en l’état.
+
+      </p>
+<br/>
+      <p>
+        Je vous invite à détailler votre situation le plus précisément possible.
+        Toutes les informations que vous me transmettrez me permettront de mieux visualiser
+        la problématique que vous rencontrez afin de répondre à votre demande le plus efficacement possible.
+      </p>
+<br/>
+      <p>
+        Après avoir rempli et rédigé toutes les informations qui vous semblent importantes,
+        n’oubliez pas d’inscrire un moyen de communication afin que je puisse vous recontacter
+        dans les plus brefs délais (email, numéro de téléphone, réseaux sociaux).
+      </p>
+<br/>
+      <p>
+        Une fois le formulaire complété, cliquez sur le bouton
+        <strong>“Envoyer le formulaire”</strong>.
+      </p>
+<br/>
+      <p>
+        Pour plus de renseignements, n'hésitez pas à me recontacter :
+      </p>
+
+      <ul>
+        <li>📞 <strong>Téléphone :</strong> 06 51 27 17 49</li>
+        <li>📧 <strong>Email :</strong> <a href="mailto:educagriff@gmail.com">educagriff@gmail.com</a></li>
+      </ul>
+  <br/> <br/>
+      <p>
+        Merci d’avoir participé à ce quiz.
+      </p>
+    </div>
+  `,
+            },
+          ],
+        },
+      },
     });
-    console.log('Question 10 créée');
+    console.log("Question 10 créée");
 
     // Question 11: Depuis quand datent les problèmes d'agressivité ?
     await prisma.question.create({
@@ -345,28 +1155,102 @@ async function seedQuestions() {
             {
               text: "Apparition ancienne",
               nextQuestionId: 12,
-              result: null
+              result: null,
             },
             {
               text: "Apparition récente",
               nextQuestionId: 12,
-              result: null
+              result: null,
             },
             {
               text: "Apparition liée à un stimulus précis",
               nextQuestionId: null,
-              result: "Nous contacter"
+              result: `
+    <div>
+      <p>
+        Votre résultat de quiz indique une situation très particulière qui est impossible à classer en l’état.
+
+      </p>
+<br/>
+      <p>
+        Je vous invite à détailler votre situation le plus précisément possible.
+        Toutes les informations que vous me transmettrez me permettront de mieux visualiser
+        la problématique que vous rencontrez afin de répondre à votre demande le plus efficacement possible.
+      </p>
+<br/>
+      <p>
+        Après avoir rempli et rédigé toutes les informations qui vous semblent importantes,
+        n’oubliez pas d’inscrire un moyen de communication afin que je puisse vous recontacter
+        dans les plus brefs délais (email, numéro de téléphone, réseaux sociaux).
+      </p>
+<br/>
+      <p>
+        Une fois le formulaire complété, cliquez sur le bouton
+        <strong>“Envoyer le formulaire”</strong>.
+      </p>
+<br/>
+      <p>
+        Pour plus de renseignements, n'hésitez pas à me recontacter :
+      </p>
+
+      <ul>
+        <li>📞 <strong>Téléphone :</strong> 06 51 27 17 49</li>
+        <li>📧 <strong>Email :</strong> <a href="mailto:educagriff@gmail.com">educagriff@gmail.com</a></li>
+      </ul>
+  <br/> <br/>
+      <p>
+        Merci d’avoir participé à ce quiz.
+      </p>
+    </div>
+  `,
             },
             {
               text: "Autre",
               nextQuestionId: null,
-              result: "Nous contacter"
-            }
-          ]
-        }
-      }
+              result: `
+    <div>
+      <p>
+        Votre résultat de quiz indique une situation très particulière qui est impossible à classer en l’état.
+
+      </p>
+<br/>
+      <p>
+        Je vous invite à détailler votre situation le plus précisément possible.
+        Toutes les informations que vous me transmettrez me permettront de mieux visualiser
+        la problématique que vous rencontrez afin de répondre à votre demande le plus efficacement possible.
+      </p>
+<br/>
+      <p>
+        Après avoir rempli et rédigé toutes les informations qui vous semblent importantes,
+        n’oubliez pas d’inscrire un moyen de communication afin que je puisse vous recontacter
+        dans les plus brefs délais (email, numéro de téléphone, réseaux sociaux).
+      </p>
+<br/>
+      <p>
+        Une fois le formulaire complété, cliquez sur le bouton
+        <strong>“Envoyer le formulaire”</strong>.
+      </p>
+<br/>
+      <p>
+        Pour plus de renseignements, n'hésitez pas à me recontacter :
+      </p>
+
+      <ul>
+        <li>📞 <strong>Téléphone :</strong> 06 51 27 17 49</li>
+        <li>📧 <strong>Email :</strong> <a href="mailto:educagriff@gmail.com">educagriff@gmail.com</a></li>
+      </ul>
+  <br/> <br/>
+      <p>
+        Merci d’avoir participé à ce quiz.
+      </p>
+    </div>
+  `,
+            },
+          ],
+        },
+      },
     });
-    console.log('Question 11 créée');
+    console.log("Question 11 créée");
 
     // Question 12: Quel est le type d'agressivité
     await prisma.question.create({
@@ -378,28 +1262,176 @@ async function seedQuestions() {
             {
               text: "Votre chien est agressif avec le ou les chats",
               nextQuestionId: null,
-              result: "Nous contacter"
+              result: `
+    <div>
+      <p>
+        Votre résultat de quiz indique une situation très particulière qui est impossible à classer en l’état.
+
+      </p>
+<br/>
+      <p>
+        Je vous invite à détailler votre situation le plus précisément possible.
+        Toutes les informations que vous me transmettrez me permettront de mieux visualiser
+        la problématique que vous rencontrez afin de répondre à votre demande le plus efficacement possible.
+      </p>
+<br/>
+      <p>
+        Après avoir rempli et rédigé toutes les informations qui vous semblent importantes,
+        n’oubliez pas d’inscrire un moyen de communication afin que je puisse vous recontacter
+        dans les plus brefs délais (email, numéro de téléphone, réseaux sociaux).
+      </p>
+<br/>
+      <p>
+        Une fois le formulaire complété, cliquez sur le bouton
+        <strong>“Envoyer le formulaire”</strong>.
+      </p>
+<br/>
+      <p>
+        Pour plus de renseignements, n'hésitez pas à me recontacter :
+      </p>
+
+      <ul>
+        <li>📞 <strong>Téléphone :</strong> 06 51 27 17 49</li>
+        <li>📧 <strong>Email :</strong> <a href="mailto:educagriff@gmail.com">educagriff@gmail.com</a></li>
+      </ul>
+  <br/> <br/>
+      <p>
+        Merci d’avoir participé à ce quiz.
+      </p>
+    </div>
+  `,
             },
             {
               text: "Votre chat est agressif avec le ou les chiens",
               nextQuestionId: null,
-              result: "Nous contacter"
+              result: `
+    <div>
+      <p>
+        Votre résultat de quiz indique une situation très particulière qui est impossible à classer en l’état.
+
+      </p>
+<br/>
+      <p>
+        Je vous invite à détailler votre situation le plus précisément possible.
+        Toutes les informations que vous me transmettrez me permettront de mieux visualiser
+        la problématique que vous rencontrez afin de répondre à votre demande le plus efficacement possible.
+      </p>
+<br/>
+      <p>
+        Après avoir rempli et rédigé toutes les informations qui vous semblent importantes,
+        n’oubliez pas d’inscrire un moyen de communication afin que je puisse vous recontacter
+        dans les plus brefs délais (email, numéro de téléphone, réseaux sociaux).
+      </p>
+<br/>
+      <p>
+        Une fois le formulaire complété, cliquez sur le bouton
+        <strong>“Envoyer le formulaire”</strong>.
+      </p>
+<br/>
+      <p>
+        Pour plus de renseignements, n'hésitez pas à me recontacter :
+      </p>
+
+      <ul>
+        <li>📞 <strong>Téléphone :</strong> 06 51 27 17 49</li>
+        <li>📧 <strong>Email :</strong> <a href="mailto:educagriff@gmail.com">educagriff@gmail.com</a></li>
+      </ul>
+  <br/> <br/>
+      <p>
+        Merci d’avoir participé à ce quiz.
+      </p>
+    </div>
+  `,
             },
             {
               text: "Votre animal est agressif avec tous les autres",
               nextQuestionId: null,
-              result: "Nous contacter"
+              result: `
+    <div>
+      <p>
+        Votre résultat de quiz indique une situation très particulière qui est impossible à classer en l’état.
+
+      </p>
+<br/>
+      <p>
+        Je vous invite à détailler votre situation le plus précisément possible.
+        Toutes les informations que vous me transmettrez me permettront de mieux visualiser
+        la problématique que vous rencontrez afin de répondre à votre demande le plus efficacement possible.
+      </p>
+<br/>
+      <p>
+        Après avoir rempli et rédigé toutes les informations qui vous semblent importantes,
+        n’oubliez pas d’inscrire un moyen de communication afin que je puisse vous recontacter
+        dans les plus brefs délais (email, numéro de téléphone, réseaux sociaux).
+      </p>
+<br/>
+      <p>
+        Une fois le formulaire complété, cliquez sur le bouton
+        <strong>“Envoyer le formulaire”</strong>.
+      </p>
+<br/>
+      <p>
+        Pour plus de renseignements, n'hésitez pas à me recontacter :
+      </p>
+
+      <ul>
+        <li>📞 <strong>Téléphone :</strong> 06 51 27 17 49</li>
+        <li>📧 <strong>Email :</strong> <a href="mailto:educagriff@gmail.com">educagriff@gmail.com</a></li>
+      </ul>
+  <br/> <br/>
+      <p>
+        Merci d’avoir participé à ce quiz.
+      </p>
+    </div>
+  `,
             },
             {
               text: "Autre",
               nextQuestionId: null,
-              result: "Nous contacter"
-            }
-          ]
-        }
-      }
+              result: `
+    <div>
+      <p>
+        Votre résultat de quiz indique une situation très particulière qui est impossible à classer en l’état.
+
+      </p>
+<br/>
+      <p>
+        Je vous invite à détailler votre situation le plus précisément possible.
+        Toutes les informations que vous me transmettrez me permettront de mieux visualiser
+        la problématique que vous rencontrez afin de répondre à votre demande le plus efficacement possible.
+      </p>
+<br/>
+      <p>
+        Après avoir rempli et rédigé toutes les informations qui vous semblent importantes,
+        n’oubliez pas d’inscrire un moyen de communication afin que je puisse vous recontacter
+        dans les plus brefs délais (email, numéro de téléphone, réseaux sociaux).
+      </p>
+<br/>
+      <p>
+        Une fois le formulaire complété, cliquez sur le bouton
+        <strong>“Envoyer le formulaire”</strong>.
+      </p>
+<br/>
+      <p>
+        Pour plus de renseignements, n'hésitez pas à me recontacter :
+      </p>
+
+      <ul>
+        <li>📞 <strong>Téléphone :</strong> 06 51 27 17 49</li>
+        <li>📧 <strong>Email :</strong> <a href="mailto:educagriff@gmail.com">educagriff@gmail.com</a></li>
+      </ul>
+  <br/> <br/>
+      <p>
+        Merci d’avoir participé à ce quiz.
+      </p>
+    </div>
+  `,
+            },
+          ],
+        },
+      },
     });
-    console.log('Question 12 créée');
+    console.log("Question 12 créée");
 
     // Question 13: En extérieur
     await prisma.question.create({
@@ -411,28 +1443,168 @@ async function seedQuestions() {
             {
               text: "Votre chien pose des problèmes",
               nextQuestionId: null,
-              result: "Prestation : Comportementaliste canin"
+              result: `
+  <div>
+    <p>
+      Votre résultat de quiz indique que vous recherchez un <strong>service de comportementaliste pour chien</strong>.
+    </p>
+<br/>
+    <p>
+      Vous trouverez toutes les prestations liées à votre résultat dans un tableau récapitulatif ci-dessous :
+    </p>
+<br/>
+    <p>
+      <table class="rounded-2xl mx-auto mx-auto mx-auto mx-auto mx-auto mx-auto mx-auto overflow-hidden shadow-lg transition-colors duration-300 bg-white text-gray-800" style="opacity: 1; transform: none;"><thead><tr><th colspan="2" class="text-2xl font-bold text-center p-4 bg-orange-100">Rééducation &amp; Comportementalisme</th></tr></thead><tbody><tr><td class="py-2 px-6 border-b border-gray-700"><div class="flex items-center gap-2">Bilan comportemental + 1er diagnostic</div></td><td class="py-2 px-6 border-b border-gray-700">70€</td></tr><tr><td class="py-2 px-6 border-b border-gray-700"><div class="flex items-center gap-2">Séance unique renouvelable</div></td><td class="py-2 px-6 border-b border-gray-700">65€</td></tr><tr><td class="py-2 px-6 border-b border-gray-700"><div class="flex items-center gap-2">Cours collectif (sous condition)</div></td><td class="py-2 px-6 border-b border-gray-700">Sur devis</td></tr><tr><td class="py-2 px-6 border-b border-gray-700"><div class="flex items-center gap-2">Cours socialisation (sous condition)</div></td><td class="py-2 px-6 border-b border-gray-700">65€</td></tr></tbody></table>
+    </p>
+<br/>
+    <p>
+      Si vous ne trouvez pas la prestation que vous recherchez, ou pour plus d'informations, je vous invite à me contacter :
+    </p>
+<br/>
+    <ul>
+      <li>📞 <strong>Téléphone :</strong> 06 51 27 17 49</li>
+      <li>📧 <strong>Email :</strong> <a href="mailto:educagriff@gmail.com">educagriff@gmail.com</a></li>
+    </ul>
+<br/>
+    <p>
+      Vous pouvez également remplir le formulaire <strong>"Nous contacter"</strong> afin de détailler votre situation le plus précisément possible.
+      Toutes les informations que vous me transmettrez me permettront de mieux visualiser la problématique que vous rencontrez
+      afin de répondre à votre demande le plus efficacement possible.
+    </p>
+<br/><br/>
+    <p>
+      Merci d’avoir participé à ce quiz.
+    </p>
+  </div>
+`,
             },
             {
               text: "Votre chat pose des problèmes",
               nextQuestionId: null,
-              result: "Prestation : Comportementaliste félin"
+              result: `
+  <div>
+    <p>
+      Votre résultat de quiz indique que vous recherchez un <strong>service d’éducation pour chat</strong>.
+      Oui, on peut éduquer son chat, c’est possible !!
+    </p>
+<br/>
+    <p>
+      Vous trouverez toutes les prestations liées à votre résultat dans un tableau récapitulatif ci-dessous :
+    </p>
+<br/>
+    <p>
+      <table class="rounded-2xl mx-auto mx-auto mx-auto mx-auto mx-auto mx-auto mx-auto overflow-hidden shadow-lg transition-colors duration-300 bg-white text-gray-800" style="opacity: 1; transform: none;"><thead><tr><th colspan="2" class="text-2xl font-bold text-center p-4 bg-orange-100">Dressage &amp; Éducation</th></tr></thead><tbody><tr><td class="py-2 p-6 border-t border-gray-700"><div class="flex items-center gap-2">Bilan comportemental</div></td><td class="py-2 p-6 border-t border-gray-700">55€</td></tr><tr><td class="py-2 p-6 border-t border-gray-700"><div class="flex items-center gap-2">Séance unique renouvelable</div></td><td class="py-2 p-6 border-t border-gray-700">50€</td></tr><tr><td class="py-2 p-6 border-t border-gray-700"><div class="flex items-center gap-2">Forfait 5 séances</div></td><td class="py-2 p-6 border-t border-gray-700">240€</td></tr><tr><td class="py-2 p-6 border-t border-gray-700"><div class="flex items-center gap-2">Forfait 10 séances</div></td><td class="py-2 p-6 border-t border-gray-700">460€</td></tr><tr><td class="py-2 p-6 border-t border-gray-700"><div class="flex items-center gap-2">Cours d'éveil chaton</div></td><td class="py-2 p-6 border-t border-gray-700">50€</td></tr><tr><td class="py-2 p-6 border-t border-gray-700"><div class="flex items-center gap-2">Sensibilisation comportementale en visio</div></td><td class="py-2 p-6 border-t border-gray-700">20€</td></tr></tbody></table>
+    </p>
+<br/>
+    <p>
+      Si vous ne trouvez pas la prestation que vous recherchez, ou pour plus d'informations, je vous invite à me contacter :
+    </p>
+<br/>
+    <ul>
+      <li>📞 <strong>Téléphone :</strong> 06 51 27 17 49</li>
+      <li>📧 <strong>Email :</strong> <a href="mailto:educagriff@gmail.com">educagriff@gmail.com</a></li>
+    </ul>
+<br/>
+    <p>
+      Vous pouvez également remplir le formulaire <strong>"Nous contacter"</strong> afin de détailler votre situation le plus précisément possible.
+      Toutes les informations que vous me transmettrez me permettront de mieux visualiser la problématique que vous rencontrez
+      afin de répondre à votre demande le plus efficacement possible.
+    </p>
+<br/><br/>
+    <p>
+      Merci d’avoir participé à ce quiz.
+    </p>
+  </div>
+`,
             },
             {
               text: "Les deux",
               nextQuestionId: null,
-              result: "Prestation : Comportementaliste canin et félin"
+              result: `
+  <div>
+    <p>
+      Votre résultat de quiz indique que vous recherchez un <strong>service de comportementaliste pour chien et chat</strong>, une situation très particulière.
+    </p>
+<br/>
+    <p>
+        Je vous invite à détailler votre situation le plus précisément possible.
+        Toutes les informations que vous me transmettrez me permettront de mieux visualiser
+        la problématique que vous rencontrez afin de répondre à votre demande le plus efficacement possible.
+      </p>
+<br/>
+      <p>
+        Après avoir rempli et rédigé toutes les informations qui vous semblent importantes,
+        n’oubliez pas d’inscrire un moyen de communication afin que je puisse vous recontacter
+        dans les plus brefs délais (email, numéro de téléphone, réseaux sociaux).
+      </p>
+<br/>
+      <p>
+        Une fois le formulaire complété, cliquez sur le bouton
+        <strong>“Envoyer le formulaire”</strong>.
+      </p>
+<br/>
+      <p>
+        Pour plus de renseignements, n'hésitez pas à me recontacter :
+      </p>
+
+      <ul>
+        <li>📞 <strong>Téléphone :</strong> 06 51 27 17 49</li>
+        <li>📧 <strong>Email :</strong> <a href="mailto:educagriff@gmail.com">educagriff@gmail.com</a></li>
+      </ul>
+  <br/> <br/>
+      <p>
+        Merci d’avoir participé à ce quiz.
+      </p>
+    </div>
+  `,
             },
             {
               text: "Autre",
               nextQuestionId: null,
-              result: "Nous contacter"
-            }
-          ]
-        }
-      }
+              result: `
+    <div>
+      <p>
+        Votre résultat de quiz indique une situation très particulière qui est impossible à classer en l’état.
+
+      </p>
+<br/>
+      <p>
+        Je vous invite à détailler votre situation le plus précisément possible.
+        Toutes les informations que vous me transmettrez me permettront de mieux visualiser
+        la problématique que vous rencontrez afin de répondre à votre demande le plus efficacement possible.
+      </p>
+<br/>
+      <p>
+        Après avoir rempli et rédigé toutes les informations qui vous semblent importantes,
+        n’oubliez pas d’inscrire un moyen de communication afin que je puisse vous recontacter
+        dans les plus brefs délais (email, numéro de téléphone, réseaux sociaux).
+      </p>
+<br/>
+      <p>
+        Une fois le formulaire complété, cliquez sur le bouton
+        <strong>“Envoyer le formulaire”</strong>.
+      </p>
+<br/>
+      <p>
+        Pour plus de renseignements, n'hésitez pas à me recontacter :
+      </p>
+
+      <ul>
+        <li>📞 <strong>Téléphone :</strong> 06 51 27 17 49</li>
+        <li>📧 <strong>Email :</strong> <a href="mailto:educagriff@gmail.com">educagriff@gmail.com</a></li>
+      </ul>
+  <br/> <br/>
+      <p>
+        Merci d’avoir participé à ce quiz.
+      </p>
+    </div>
+  `,
+            },
+          ],
+        },
+      },
     });
-    console.log('Question 13 créée');
+    console.log("Question 13 créée");
 
     // Question 14: Les changements de comportement sont
     await prisma.question.create({
@@ -444,32 +1616,177 @@ async function seedQuestions() {
             {
               text: "D'ordre agressif",
               nextQuestionId: null,
-              result: "Prestation : Comportementaliste canin et félin"
+              result: `
+  <div>
+    <p>
+      Votre résultat de quiz indique que vous recherchez un <strong>service de comportementaliste pour chien et chat</strong>, une situation très particulière.
+    </p>
+<br/>
+    <p>
+        Je vous invite à détailler votre situation le plus précisément possible.
+        Toutes les informations que vous me transmettrez me permettront de mieux visualiser
+        la problématique que vous rencontrez afin de répondre à votre demande le plus efficacement possible.
+      </p>
+<br/>
+      <p>
+        Après avoir rempli et rédigé toutes les informations qui vous semblent importantes,
+        n’oubliez pas d’inscrire un moyen de communication afin que je puisse vous recontacter
+        dans les plus brefs délais (email, numéro de téléphone, réseaux sociaux).
+      </p>
+<br/>
+      <p>
+        Une fois le formulaire complété, cliquez sur le bouton
+        <strong>“Envoyer le formulaire”</strong>.
+      </p>
+<br/>
+      <p>
+        Pour plus de renseignements, n'hésitez pas à me recontacter :
+      </p>
+
+      <ul>
+        <li>📞 <strong>Téléphone :</strong> 06 51 27 17 49</li>
+        <li>📧 <strong>Email :</strong> <a href="mailto:educagriff@gmail.com">educagriff@gmail.com</a></li>
+      </ul>
+  <br/> <br/>
+      <p>
+        Merci d’avoir participé à ce quiz.
+      </p>
+    </div>
+  `,
             },
             {
               text: "D'ordre anxieux",
               nextQuestionId: null,
-              result: "Prestation : Comportementaliste canin et félin"
+              result: `
+  <div>
+    <p>
+      Votre résultat de quiz indique que vous recherchez un <strong>service de comportementaliste pour chien et chat</strong>, une situation très particulière.
+    </p>
+<br/>
+    <p>
+        Je vous invite à détailler votre situation le plus précisément possible.
+        Toutes les informations que vous me transmettrez me permettront de mieux visualiser
+        la problématique que vous rencontrez afin de répondre à votre demande le plus efficacement possible.
+      </p>
+<br/>
+      <p>
+        Après avoir rempli et rédigé toutes les informations qui vous semblent importantes,
+        n’oubliez pas d’inscrire un moyen de communication afin que je puisse vous recontacter
+        dans les plus brefs délais (email, numéro de téléphone, réseaux sociaux).
+      </p>
+<br/>
+      <p>
+        Une fois le formulaire complété, cliquez sur le bouton
+        <strong>“Envoyer le formulaire”</strong>.
+      </p>
+<br/>
+      <p>
+        Pour plus de renseignements, n'hésitez pas à me recontacter :
+      </p>
+
+      <ul>
+        <li>📞 <strong>Téléphone :</strong> 06 51 27 17 49</li>
+        <li>📧 <strong>Email :</strong> <a href="mailto:educagriff@gmail.com">educagriff@gmail.com</a></li>
+      </ul>
+  <br/> <br/>
+      <p>
+        Merci d’avoir participé à ce quiz.
+      </p>
+    </div>
+  `,
             },
             {
               text: "D'ordre apatique / léthargique",
               nextQuestionId: null,
-              result: "Prestation : Comportementaliste canin et félin"
+              result: `
+  <div>
+    <p>
+      Votre résultat de quiz indique que vous recherchez un <strong>service de comportementaliste pour chien et chat</strong>, une situation très particulière.
+    </p>
+<br/>
+    <p>
+        Je vous invite à détailler votre situation le plus précisément possible.
+        Toutes les informations que vous me transmettrez me permettront de mieux visualiser
+        la problématique que vous rencontrez afin de répondre à votre demande le plus efficacement possible.
+      </p>
+<br/>
+      <p>
+        Après avoir rempli et rédigé toutes les informations qui vous semblent importantes,
+        n’oubliez pas d’inscrire un moyen de communication afin que je puisse vous recontacter
+        dans les plus brefs délais (email, numéro de téléphone, réseaux sociaux).
+      </p>
+<br/>
+      <p>
+        Une fois le formulaire complété, cliquez sur le bouton
+        <strong>“Envoyer le formulaire”</strong>.
+      </p>
+<br/>
+      <p>
+        Pour plus de renseignements, n'hésitez pas à me recontacter :
+      </p>
+
+      <ul>
+        <li>📞 <strong>Téléphone :</strong> 06 51 27 17 49</li>
+        <li>📧 <strong>Email :</strong> <a href="mailto:educagriff@gmail.com">educagriff@gmail.com</a></li>
+      </ul>
+  <br/> <br/>
+      <p>
+        Merci d’avoir participé à ce quiz.
+      </p>
+    </div>
+  `,
             },
             {
               text: "Autre",
               nextQuestionId: null,
-              result: "Nous contacter"
-            }
-          ]
-        }
-      }
-    });
-    console.log('Question 14 créée');
+              result: `
+    <div>
+      <p>
+        Votre résultat de quiz indique une situation très particulière qui est impossible à classer en l’état.
 
-    console.log('Toutes les questions ont été créées avec succès');
+      </p>
+<br/>
+      <p>
+        Je vous invite à détailler votre situation le plus précisément possible.
+        Toutes les informations que vous me transmettrez me permettront de mieux visualiser
+        la problématique que vous rencontrez afin de répondre à votre demande le plus efficacement possible.
+      </p>
+<br/>
+      <p>
+        Après avoir rempli et rédigé toutes les informations qui vous semblent importantes,
+        n’oubliez pas d’inscrire un moyen de communication afin que je puisse vous recontacter
+        dans les plus brefs délais (email, numéro de téléphone, réseaux sociaux).
+      </p>
+<br/>
+      <p>
+        Une fois le formulaire complété, cliquez sur le bouton
+        <strong>“Envoyer le formulaire”</strong>.
+      </p>
+<br/>
+      <p>
+        Pour plus de renseignements, n'hésitez pas à me recontacter :
+      </p>
+
+      <ul>
+        <li>📞 <strong>Téléphone :</strong> 06 51 27 17 49</li>
+        <li>📧 <strong>Email :</strong> <a href="mailto:educagriff@gmail.com">educagriff@gmail.com</a></li>
+      </ul>
+  <br/> <br/>
+      <p>
+        Merci d’avoir participé à ce quiz.
+      </p>
+    </div>
+  `,
+            },
+          ],
+        },
+      },
+    });
+    console.log("Question 14 créée");
+
+    console.log("Toutes les questions ont été créées avec succès");
   } catch (error) {
-    console.error('Erreur lors du seeding:', error);
+    console.error("Erreur lors du seeding:", error);
   }
 }
 
@@ -485,139 +1802,154 @@ async function main() {
       productName: "Pré-visite (déduite sur la première prestation)",
       price: 9,
       currency: "EUR",
-      description: "La pré-visite corresponds à la première rencontre entre l'animal et son petsitter, elle permet notamment de pouvoir créer un premier lien afin que l'animal se sente bien par la suite si le maître prend un service de petsitting. Chez educagriff la pré-visite est payante mais sera déduite du prix de la première séance afin qu'elle devienne gratuite.",
+      description:
+        "La pré-visite corresponds à la première rencontre entre l'animal et son petsitter, elle permet notamment de pouvoir créer un premier lien afin que l'animal se sente bien par la suite si le maître prend un service de petsitting. Chez educagriff la pré-visite est payante mais sera déduite du prix de la première séance afin qu'elle devienne gratuite.",
       category: "PETSITTING",
       animalType: "CAT",
-      order: 1
+      order: 1,
     },
     {
       productName: "Visite à domicile 30min | 45min | 1h",
       price: 15,
       currency: "EUR",
-      description: "Les séances de visite à domicile à durée déterminée pour chats sont des séances pendant laquelles le petsitter va s'occuper de votre animal afin de répondre à ses besoins primaires (nourriture boisson soins nettoyage litière etc) et de ses besoins secondaires (caresses, jeux, brossage, etc)",
+      description:
+        "Les séances de visite à domicile à durée déterminée pour chats sont des séances pendant laquelles le petsitter va s'occuper de votre animal afin de répondre à ses besoins primaires (nourriture boisson soins nettoyage litière etc) et de ses besoins secondaires (caresses, jeux, brossage, etc)",
       category: "PETSITTING",
       animalType: "CAT",
-      order: 2
+      order: 2,
     },
     {
       productName: "Forfait semaine",
       price: 0,
       currency: "EUR",
-      description: "Service de petsitting flexible, adapté à la fréquence souhaitée. Le tarif est défini en fonction du nombre de jours et de la durée des prestations. Avec Educagriff, la fidélité est toujours récompensée : plus vous faites appel à nos services, plus le tarif par séance est avantageux.",
+      description:
+        "Service de petsitting flexible, adapté à la fréquence souhaitée. Le tarif est défini en fonction du nombre de jours et de la durée des prestations. Avec Educagriff, la fidélité est toujours récompensée : plus vous faites appel à nos services, plus le tarif par séance est avantageux.",
       category: "PETSITTING",
       animalType: "CAT",
-      order: 3
+      order: 3,
     },
     {
       productName: "Forfait vacances (plus de 3 jours)",
       price: 0,
       currency: "EUR",
-      description: "Service de petsitting sur mesure, incluant deux visites quotidiennes à votre domicile pour une durée minimale de trois jours. Votre petsitter veille au bien-être de votre animal en assurant son alimentation, ses soins et son confort. Des nouvelles journalières vous sont envoyées afin que vous puissiez profiter de vos vacances en toute sérénité.",
+      description:
+        "Service de petsitting sur mesure, incluant deux visites quotidiennes à votre domicile pour une durée minimale de trois jours. Votre petsitter veille au bien-être de votre animal en assurant son alimentation, ses soins et son confort. Des nouvelles journalières vous sont envoyées afin que vous puissiez profiter de vos vacances en toute sérénité.",
       category: "PETSITTING",
       animalType: "CAT",
-      order: 4
+      order: 4,
     },
     {
       productName: "Animal supplémentaire",
       price: 5,
       currency: "EUR",
-      description: "Pour chaque animal supplémentaire au sein de votre foyer, un supplément de 5 € sera appliqué aux tarifs indiqués ci-dessus.",
+      description:
+        "Pour chaque animal supplémentaire au sein de votre foyer, un supplément de 5 € sera appliqué aux tarifs indiqués ci-dessus.",
       category: "PETSITTING",
       animalType: "CAT",
-      order: 5
+      order: 5,
     },
     {
       productName: "Amener chez le vétérinaire",
       price: 0,
       currency: "EUR",
-      description: "Service possible pour tous les chat. Il permet d'amener votre animal chez le vétérinaire pendant votre absence. Le prix sera à déterminer en fonction de la distance à parcourir et à la durée de l'intervention vétérinaire.",
+      description:
+        "Service possible pour tous les chat. Il permet d'amener votre animal chez le vétérinaire pendant votre absence. Le prix sera à déterminer en fonction de la distance à parcourir et à la durée de l'intervention vétérinaire.",
       category: "PETSITTING",
       animalType: "CAT",
-      order: 6
+      order: 6,
     },
     // Dressage & Éducation
     {
       productName: "Bilan comportemental",
       price: 55,
       currency: "EUR",
-      description: "Le bilan comportemental vise à recueillir un maximum d'informations sur votre animal, son environnement, ainsi que votre relation avec lui (habitudes, règles, rituels, interdictions). Cette analyse approfondie permet d'identifier les éventuelles problématiques et de proposer un accompagnement adapté. À l'issue de ce bilan, un contrat pourra être établi pour la mise en place d'un suivi personnalisé. Les modalités et le nombre de séances seront définis après l'évaluation et vous seront communiqués oralement ou par e-mail, selon les besoins identifiés.",
+      description:
+        "Le bilan comportemental vise à recueillir un maximum d'informations sur votre animal, son environnement, ainsi que votre relation avec lui (habitudes, règles, rituels, interdictions). Cette analyse approfondie permet d'identifier les éventuelles problématiques et de proposer un accompagnement adapté. À l'issue de ce bilan, un contrat pourra être établi pour la mise en place d'un suivi personnalisé. Les modalités et le nombre de séances seront définis après l'évaluation et vous seront communiqués oralement ou par e-mail, selon les besoins identifiés.",
       category: "DRESSAGE_EDUCATION",
       animalType: "CAT",
-      order: 1
+      order: 1,
     },
     {
       productName: "Séance unique renouvelable",
       price: 50,
       currency: "EUR",
-      description: "Les séances uniques personnalisées chats ont pour objectif d'enseigner des commandes, des postures et des automatismes adaptés aux besoins du maître. Il faut savoir que le dressage félins exigent une grande patience. Ces sessions d'éducation sur mesure visent à renforcer la relation entre l'animal et son propriétaire en travaillant avec des exercices tels que assis,  l'apprentissage de la marche en harnais, etc. Ces séances ont également objectif de traiter les problématiques identifiées lors du bilan comportemental pour une cohabitation plus harmonieuse. Attention tous les chats ne sont pas aptes à pouvoir être dresser (à déterminer lors du bilan comportemental).",
+      description:
+        "Les séances uniques personnalisées chats ont pour objectif d'enseigner des commandes, des postures et des automatismes adaptés aux besoins du maître. Il faut savoir que le dressage félins exigent une grande patience. Ces sessions d'éducation sur mesure visent à renforcer la relation entre l'animal et son propriétaire en travaillant avec des exercices tels que assis,  l'apprentissage de la marche en harnais, etc. Ces séances ont également objectif de traiter les problématiques identifiées lors du bilan comportemental pour une cohabitation plus harmonieuse. Attention tous les chats ne sont pas aptes à pouvoir être dresser (à déterminer lors du bilan comportemental).",
       category: "DRESSAGE_EDUCATION",
       animalType: "CAT",
-      order: 2
+      order: 2,
     },
     {
       productName: "Forfait 5 séances",
       price: 240,
       currency: "EUR",
-      description: "Les forfaits 5 et 10 séances sont des formules permettant d'appliquer un tarif dégressif ( voir explications séances uniques)",
+      description:
+        "Les forfaits 5 et 10 séances sont des formules permettant d'appliquer un tarif dégressif ( voir explications séances uniques)",
       category: "DRESSAGE_EDUCATION",
       animalType: "CAT",
-      order: 3
+      order: 3,
     },
     {
       productName: "Forfait 10 séances",
       price: 460,
       currency: "EUR",
-      description: "Les forfaits 5 et 10 séances sont des formules permettant d'appliquer un tarif dégressif ( voir explications séances uniques)",
+      description:
+        "Les forfaits 5 et 10 séances sont des formules permettant d'appliquer un tarif dégressif ( voir explications séances uniques)",
       category: "DRESSAGE_EDUCATION",
       animalType: "CAT",
-      order: 4
+      order: 4,
     },
     {
       productName: "Cours d'éveil chaton",
       price: 50,
       currency: "EUR",
-      description: "Les consultations d'éveil pour chatons (0 à 4 mois) sont des sessions éducatives visant à favoriser leur développement comportemental. Elles incluent des exercices sensoriels (sonores, visuels et olfactifs) destinés à stimuler leurs interactions avec leur environnement, à renforcer leur tolérance aux stimulations extérieures et à améliorer la gestion de leurs émotions.",
+      description:
+        "Les consultations d'éveil pour chatons (0 à 4 mois) sont des sessions éducatives visant à favoriser leur développement comportemental. Elles incluent des exercices sensoriels (sonores, visuels et olfactifs) destinés à stimuler leurs interactions avec leur environnement, à renforcer leur tolérance aux stimulations extérieures et à améliorer la gestion de leurs émotions.",
       category: "DRESSAGE_EDUCATION",
       animalType: "CAT",
-      order: 5
+      order: 5,
     },
     {
       productName: "Sensibilisation comportementale en visio",
       price: 20,
       currency: "EUR",
-      description: "La sensibilisation comportementale en visioconférence est un cours théorique au cours duquel l'éducateur répond aux questions du client. Il vise à restaurer une compréhension claire des signaux émis par l'animal et à enseigner son langage ainsi que ses besoins spécifiques.",
+      description:
+        "La sensibilisation comportementale en visioconférence est un cours théorique au cours duquel l'éducateur répond aux questions du client. Il vise à restaurer une compréhension claire des signaux émis par l'animal et à enseigner son langage ainsi que ses besoins spécifiques.",
       category: "DRESSAGE_EDUCATION",
       animalType: "CAT",
-      order: 6
+      order: 6,
     },
     // Rééducation & Comportementalisme
     {
       productName: "Bilan comportemental + 1er diagnostic",
       price: 70,
       currency: "EUR",
-      description: "Le bilan comportemental de la section comportementalisme a pour objectif de recueillir des informations détaillées sur votre animal, son environnement, ainsi que sur votre relation avec lui (habitudes, règles, rituels, interdictions). Cette évaluation approfondie permet d'identifier d'éventuelles problématiques, notamment liées à des troubles comportementaux ou à des pathologies sous-jacentes, et de proposer un accompagnement adapté. À l'issue de ce bilan, un contrat pourra être établi pour un suivi personnalisé. Les modalités et le nombre de séances seront définis après l'évaluation et communiqués oralement ou par e-mail afin de mettre en place une thérapie comportementale adaptés, en fonction des besoins identifiés. Le premier diagnostic concerne ainsi la suspicion de la présence d'un trouble comportemental et sera détaillé après la séance par mail.",
+      description:
+        "Le bilan comportemental de la section comportementalisme a pour objectif de recueillir des informations détaillées sur votre animal, son environnement, ainsi que sur votre relation avec lui (habitudes, règles, rituels, interdictions). Cette évaluation approfondie permet d'identifier d'éventuelles problématiques, notamment liées à des troubles comportementaux ou à des pathologies sous-jacentes, et de proposer un accompagnement adapté. À l'issue de ce bilan, un contrat pourra être établi pour un suivi personnalisé. Les modalités et le nombre de séances seront définis après l'évaluation et communiqués oralement ou par e-mail afin de mettre en place une thérapie comportementale adaptés, en fonction des besoins identifiés. Le premier diagnostic concerne ainsi la suspicion de la présence d'un trouble comportemental et sera détaillé après la séance par mail.",
       category: "REEDUCATION_COMPORTEMENTALISME",
       animalType: "CAT",
-      order: 1
+      order: 1,
     },
     {
       productName: "Séance unique renouvelable",
       price: 65,
       currency: "EUR",
-      description: "Les séances uniques pour chats ont pour objectif de mettre en place une thérapie comportementale adaptée pour répondre aux difficultés spécifiques de l'animal. Ces sessions de comportementalisme ou de rééducation sur mesure visent à renforcer la relation entre l'animal et son propriétaire en travaillant sur des exercices ludiques et de gestion comportementale, afin d'instaurer une communication optimale et harmonieuse.",
+      description:
+        "Les séances uniques pour chats ont pour objectif de mettre en place une thérapie comportementale adaptée pour répondre aux difficultés spécifiques de l'animal. Ces sessions de comportementalisme ou de rééducation sur mesure visent à renforcer la relation entre l'animal et son propriétaire en travaillant sur des exercices ludiques et de gestion comportementale, afin d'instaurer une communication optimale et harmonieuse.",
       category: "REEDUCATION_COMPORTEMENTALISME",
       animalType: "CAT",
-      order: 2
+      order: 2,
     },
     {
       productName: "Cours socialisation",
       price: 65,
       currency: "EUR",
-      description: "Cours socialisation pour chat est une séance spéciale qui a pour objectif de favoriser la tolérance de l'animal à la présence de nouveaux arrivant dans son milieu (bébés, chats, chiens, adulte , etc)",
+      description:
+        "Cours socialisation pour chat est une séance spéciale qui a pour objectif de favoriser la tolérance de l'animal à la présence de nouveaux arrivant dans son milieu (bébés, chats, chiens, adulte , etc)",
       category: "REEDUCATION_COMPORTEMENTALISME",
       animalType: "CAT",
-      order: 3
-    }
+      order: 3,
+    },
   ];
 
   const dogsData = [
@@ -626,175 +1958,194 @@ async function main() {
       productName: "Pré-visite (déduite sur la première prestation)",
       price: 9,
       currency: "EUR",
-      description: "La pré-visite corresponds à la première rencontre entre l'animal et son petsitter, elle permet notamment de pouvoir créer un premier lien afin que l'animal se sente bien par la suite si le maître prend un service de petsitting. Chez educagriff la pré-visite est payante mais sera déduite du prix de la première séance afin qu'elle devienne gratuite.",
+      description:
+        "La pré-visite corresponds à la première rencontre entre l'animal et son petsitter, elle permet notamment de pouvoir créer un premier lien afin que l'animal se sente bien par la suite si le maître prend un service de petsitting. Chez educagriff la pré-visite est payante mais sera déduite du prix de la première séance afin qu'elle devienne gratuite.",
       category: "PETSITTING",
       animalType: "DOG",
-      order: 1
+      order: 1,
     },
     {
       productName: "Visite à domicile 30min | 45min | 1h",
       price: 15,
       currency: "EUR",
-      description: "Les séances de visite à domicile à durée déterminée pour chiens sont des séances pendant laquelle le petsitter va s'occuper de votre animal afin de répondre à ses besoins primaires (nourritures, boisson soins et déjection) et secondaires ( jeux caresses attention) de plus ce service est adaptatif en fonction de vos besoins.",
+      description:
+        "Les séances de visite à domicile à durée déterminée pour chiens sont des séances pendant laquelle le petsitter va s'occuper de votre animal afin de répondre à ses besoins primaires (nourritures, boisson soins et déjection) et secondaires ( jeux caresses attention) de plus ce service est adaptatif en fonction de vos besoins.",
       category: "PETSITTING",
       animalType: "DOG",
-      order: 2
+      order: 2,
     },
     {
       productName: "Balade hygiénique 30min",
       price: 15,
       currency: "EUR",
-      description: "Les balades hygiéniques pour chiens constituent un service essentiel visant à assurer la sortie de votre animal en votre absence, lui permettant ainsi de faire ses besoins et de bénéficier d'un moment de détente à l'extérieur.",
+      description:
+        "Les balades hygiéniques pour chiens constituent un service essentiel visant à assurer la sortie de votre animal en votre absence, lui permettant ainsi de faire ses besoins et de bénéficier d'un moment de détente à l'extérieur.",
       category: "PETSITTING",
       animalType: "DOG",
-      order: 3
+      order: 3,
     },
     {
       productName: "Balade éducative 1h",
       price: 23,
       currency: "EUR",
-      description: "Les balades éducatives pour chiens combinent une sortie hygiénique de 30 minutes et un accompagnement éducatif personnalisé. Ce service permet de consolider les acquis et de renforcer les comportements en cours d'apprentissage, favorisant ainsi une progression continue et un équilibre optimal pour votre chien.",
+      description:
+        "Les balades éducatives pour chiens combinent une sortie hygiénique de 30 minutes et un accompagnement éducatif personnalisé. Ce service permet de consolider les acquis et de renforcer les comportements en cours d'apprentissage, favorisant ainsi une progression continue et un équilibre optimal pour votre chien.",
       category: "PETSITTING",
       animalType: "DOG",
-      order: 4
+      order: 4,
     },
     {
       productName: "Forfait semaine",
       price: 0,
       currency: "EUR",
-      description: "Service de petsitting flexible, adapté à la fréquence souhaitée. Le tarif est défini en fonction du nombre de jours et de la durée des prestations. Avec Educagriff, la fidélité est toujours récompensée : plus vous faites appel à nos services, plus le tarif par séance est avantageux.",
+      description:
+        "Service de petsitting flexible, adapté à la fréquence souhaitée. Le tarif est défini en fonction du nombre de jours et de la durée des prestations. Avec Educagriff, la fidélité est toujours récompensée : plus vous faites appel à nos services, plus le tarif par séance est avantageux.",
       category: "PETSITTING",
       animalType: "DOG",
-      order: 5
+      order: 5,
     },
     {
       productName: "Forfait vacances (plus de 3 jours)",
       price: 0,
       currency: "EUR",
-      description: "Service de petsitting sur mesure, incluant deux visites quotidiennes à votre domicile pour une durée minimale de trois jours. Votre petsitter veille au bien-être de votre animal en assurant son alimentation, ses soins et son confort. Des nouvelles journalières vous sont envoyées afin que vous puissiez profiter de vos vacances en toute sérénité.",
+      description:
+        "Service de petsitting sur mesure, incluant deux visites quotidiennes à votre domicile pour une durée minimale de trois jours. Votre petsitter veille au bien-être de votre animal en assurant son alimentation, ses soins et son confort. Des nouvelles journalières vous sont envoyées afin que vous puissiez profiter de vos vacances en toute sérénité.",
       category: "PETSITTING",
       animalType: "DOG",
-      order: 6
+      order: 6,
     },
     {
       productName: "Animal supplémentaire",
       price: 5,
       currency: "EUR",
-      description: "Pour chaque animal supplémentaire au sein de votre foyer, un supplément de 5 € sera appliqué aux tarifs indiqués ci-dessus.",
+      description:
+        "Pour chaque animal supplémentaire au sein de votre foyer, un supplément de 5 € sera appliqué aux tarifs indiqués ci-dessus.",
       category: "PETSITTING",
       animalType: "DOG",
-      order: 7
+      order: 7,
     },
     {
       productName: "Amener chez le vétérinaire",
       price: 0,
       currency: "EUR",
-      description: "Service exclusif pour les petits chiens (moins de 10 kilos). Il permet d'amener votre animal chez le vétérinaire pendant votre absence. Le prix sera à déterminer en fonction de la distance à parcourir et à la durée de l'intervention vétérinaire.",
+      description:
+        "Service exclusif pour les petits chiens (moins de 10 kilos). Il permet d'amener votre animal chez le vétérinaire pendant votre absence. Le prix sera à déterminer en fonction de la distance à parcourir et à la durée de l'intervention vétérinaire.",
       category: "PETSITTING",
       animalType: "DOG",
-      order: 8
+      order: 8,
     },
     // Dressage & Éducation
     {
       productName: "Bilan comportemental",
       price: 55,
       currency: "EUR",
-      description: "Le bilan comportemental vise à recueillir un maximum d'informations sur votre animal, son environnement, ainsi que votre relation avec lui (habitudes, règles, rituels, interdictions). Cette analyse approfondie permet d'identifier les éventuelles problématiques et de proposer un accompagnement adapté. À l'issue de ce bilan, un contrat pourra être établi pour la mise en place d'un suivi personnalisé. Les modalités et le nombre de séances seront définis après l'évaluation et vous seront communiqués oralement ou par e-mail, selon les besoins identifiés.",
+      description:
+        "Le bilan comportemental vise à recueillir un maximum d'informations sur votre animal, son environnement, ainsi que votre relation avec lui (habitudes, règles, rituels, interdictions). Cette analyse approfondie permet d'identifier les éventuelles problématiques et de proposer un accompagnement adapté. À l'issue de ce bilan, un contrat pourra être établi pour la mise en place d'un suivi personnalisé. Les modalités et le nombre de séances seront définis après l'évaluation et vous seront communiqués oralement ou par e-mail, selon les besoins identifiés.",
       category: "DRESSAGE_EDUCATION",
       animalType: "DOG",
-      order: 1
+      order: 1,
     },
     {
       productName: "Séance unique renouvelable",
       price: 50,
       currency: "EUR",
-      description: "Les séances uniques personnalisées pour chiens ont pour objectif d'enseigner des commandes, des postures et des automatismes adaptés aux besoins du maître. Ces sessions d'éducation sur mesure visent à renforcer la relation entre l'animal et son propriétaire en travaillant des exercices de dressages tels que assis, couché, attends, au pied ou encore la marche en laisse. Elles permettent également de traiter les problématiques identifiées lors du bilan comportemental pour une cohabitation plus harmonieuse.",
+      description:
+        "Les séances uniques personnalisées pour chiens ont pour objectif d'enseigner des commandes, des postures et des automatismes adaptés aux besoins du maître. Ces sessions d'éducation sur mesure visent à renforcer la relation entre l'animal et son propriétaire en travaillant des exercices de dressages tels que assis, couché, attends, au pied ou encore la marche en laisse. Elles permettent également de traiter les problématiques identifiées lors du bilan comportemental pour une cohabitation plus harmonieuse.",
       category: "DRESSAGE_EDUCATION",
       animalType: "DOG",
-      order: 2
+      order: 2,
     },
     {
       productName: "Forfait 5 séances",
       price: 240,
       currency: "EUR",
-      description: "Les forfaits 5 et 10 séances sont des formules permettant d'appliquer un tarif dégressif ( voir explications séances uniques)",
+      description:
+        "Les forfaits 5 et 10 séances sont des formules permettant d'appliquer un tarif dégressif ( voir explications séances uniques)",
       category: "DRESSAGE_EDUCATION",
       animalType: "DOG",
-      order: 3
+      order: 3,
     },
     {
       productName: "Forfait 10 séances",
       price: 460,
       currency: "EUR",
-      description: "Les forfaits 5 et 10 séances sont des formules permettant d'appliquer un tarif dégressif ( voir explications séances uniques)",
+      description:
+        "Les forfaits 5 et 10 séances sont des formules permettant d'appliquer un tarif dégressif ( voir explications séances uniques)",
       category: "DRESSAGE_EDUCATION",
       animalType: "DOG",
-      order: 4
+      order: 4,
     },
     {
       productName: "Cours d'éveil chiot",
       price: 50,
       currency: "EUR",
-      description: "Les consultations d'éveil pour chiots (0 à 4 mois) sont des sessions éducatives visant à favoriser leur développement comportemental. Elles incluent des exercices sensoriels (sonores, visuels et olfactifs) destinés à stimuler leurs interactions avec leur environnement, à renforcer leur tolérance aux stimulations extérieures et à améliorer la gestion de leurs émotions.",
+      description:
+        "Les consultations d'éveil pour chiots (0 à 4 mois) sont des sessions éducatives visant à favoriser leur développement comportemental. Elles incluent des exercices sensoriels (sonores, visuels et olfactifs) destinés à stimuler leurs interactions avec leur environnement, à renforcer leur tolérance aux stimulations extérieures et à améliorer la gestion de leurs émotions.",
       category: "DRESSAGE_EDUCATION",
       animalType: "DOG",
-      order: 5
+      order: 5,
     },
     {
       productName: "Désensibilisation muselière",
       price: 55,
       currency: "EUR",
-      description: "La désensibilisation à la muselière est une séance de dressage spécialisée visant à apprendre au chien à accepter et à porter la muselière de manière confortable et détendue en toute circonstance.",
+      description:
+        "La désensibilisation à la muselière est une séance de dressage spécialisée visant à apprendre au chien à accepter et à porter la muselière de manière confortable et détendue en toute circonstance.",
       category: "DRESSAGE_EDUCATION",
       animalType: "DOG",
-      order: 6
+      order: 6,
     },
     {
       productName: "Balade éducative en groupe (sous condition)",
       price: 15,
       currency: "EUR",
-      description: "Les balades éducatives en groupe ont pour objectif de renforcer la socialisation des chiens et d'améliorer leur relation avec leurs maîtres. Ces sorties enrichissantes favorisent le développement de compétences essentielles, telles que la gestion des émotions, la marche en laisse et en longe, ainsi que le rappel. Elles permettent également d'instaurer des interactions harmonieuses entre les chiens et de diversifier leurs expériences pour un meilleur équilibre au quotidien.",
+      description:
+        "Les balades éducatives en groupe ont pour objectif de renforcer la socialisation des chiens et d'améliorer leur relation avec leurs maîtres. Ces sorties enrichissantes favorisent le développement de compétences essentielles, telles que la gestion des émotions, la marche en laisse et en longe, ainsi que le rappel. Elles permettent également d'instaurer des interactions harmonieuses entre les chiens et de diversifier leurs expériences pour un meilleur équilibre au quotidien.",
       category: "DRESSAGE_EDUCATION",
       animalType: "DOG",
-      order: 7
+      order: 7,
     },
     // Rééducation & Comportementalisme
     {
       productName: "Bilan comportemental + 1er diagnostic",
       price: 70,
       currency: "EUR",
-      description: "Le bilan comportemental de la section comportementalisme a pour objectif de recueillir des informations détaillées sur votre animal, son environnement, ainsi que sur votre relation avec lui (habitudes, règles, rituels, interdictions). Cette évaluation approfondie permet d'identifier d'éventuelles problématiques, notamment liées à des troubles comportementaux ou à des pathologies sous-jacentes, et de proposer un accompagnement adapté. À l'issue de ce bilan, un contrat pourra être établi pour un suivi personnalisé. Les modalités et le nombre de séances seront définis après l'évaluation et communiqués oralement ou par e-mail afin de mettre en place une thérapie comportementale adaptés, en fonction des besoins identifiés. Le premier diagnostic concerne ainsi la suspicion de la présence d'un trouble comportemental et sera détaillé après la séance par mail.",
+      description:
+        "Le bilan comportemental de la section comportementalisme a pour objectif de recueillir des informations détaillées sur votre animal, son environnement, ainsi que sur votre relation avec lui (habitudes, règles, rituels, interdictions). Cette évaluation approfondie permet d'identifier d'éventuelles problématiques, notamment liées à des troubles comportementaux ou à des pathologies sous-jacentes, et de proposer un accompagnement adapté. À l'issue de ce bilan, un contrat pourra être établi pour un suivi personnalisé. Les modalités et le nombre de séances seront définis après l'évaluation et communiqués oralement ou par e-mail afin de mettre en place une thérapie comportementale adaptés, en fonction des besoins identifiés. Le premier diagnostic concerne ainsi la suspicion de la présence d'un trouble comportemental et sera détaillé après la séance par mail.",
       category: "REEDUCATION_COMPORTEMENTALISME",
       animalType: "DOG",
-      order: 1
+      order: 1,
     },
     {
       productName: "Séance unique renouvelable",
       price: 65,
       currency: "EUR",
-      description: "Les séances uniques pour chiens ont pour objectif de mettre en place une thérapie comportementale adaptée pour répondre aux difficultés spécifiques de l'animal. Ces sessions de comportementalisme ou de rééducation sur mesure visent à renforcer la relation entre l'animal et son propriétaire en travaillant sur des exercices ludiques et de gestion comportementale, afin d'instaurer une communication optimale et harmonieuse.",
+      description:
+        "Les séances uniques pour chiens ont pour objectif de mettre en place une thérapie comportementale adaptée pour répondre aux difficultés spécifiques de l'animal. Ces sessions de comportementalisme ou de rééducation sur mesure visent à renforcer la relation entre l'animal et son propriétaire en travaillant sur des exercices ludiques et de gestion comportementale, afin d'instaurer une communication optimale et harmonieuse.",
       category: "REEDUCATION_COMPORTEMENTALISME",
       animalType: "DOG",
-      order: 2
+      order: 2,
     },
     {
       productName: "Cours collectif (sous condition)",
       price: 0,
       currency: "EUR",
-      description: "Les cours collectifs pour chiens sont des séances spéciales visant à apprendre ou rééduquer les chiens à la présence d'autres congénères. L'objectif est de leur permettre de rétablir une communication canine adéquate et harmonieuse.",
+      description:
+        "Les cours collectifs pour chiens sont des séances spéciales visant à apprendre ou rééduquer les chiens à la présence d'autres congénères. L'objectif est de leur permettre de rétablir une communication canine adéquate et harmonieuse.",
       category: "REEDUCATION_COMPORTEMENTALISME",
       animalType: "DOG",
-      order: 3
+      order: 3,
     },
     {
       productName: "Cours socialisation (sous condition)",
       price: 65,
       currency: "EUR",
-      description: "Cours socialisation pour chien est une séance spéciale qui a pour objectif de favoriser la tolérance de l'animal à la présence de nouveaux arrivant dans son milieu (bébés, chats, chiens, adulte , etc). Cette séance est soumise à quelque conditions  préalable afin de pouvoir s'effectuer dans les meilleures conditions (voir avec le comportementaliste lors du bilan).",
+      description:
+        "Cours socialisation pour chien est une séance spéciale qui a pour objectif de favoriser la tolérance de l'animal à la présence de nouveaux arrivant dans son milieu (bébés, chats, chiens, adulte , etc). Cette séance est soumise à quelque conditions  préalable afin de pouvoir s'effectuer dans les meilleures conditions (voir avec le comportementaliste lors du bilan).",
       category: "REEDUCATION_COMPORTEMENTALISME",
       animalType: "DOG",
-      order: 4
-    }
+      order: 4,
+    },
   ];
 
   const allServices = [...catsData, ...dogsData];
@@ -806,16 +2157,21 @@ async function main() {
   for (const service of allServices) {
     try {
       await prisma.price.create({
-        data: service
+        data: service,
       });
       insertedCount++;
     } catch (error) {
-      console.error(`Erreur lors de l'insertion de "${service.productName}" :`, error.message);
+      console.error(
+        `Erreur lors de l'insertion de "${service.productName}" :`,
+        error.message
+      );
     }
   }
 
-  console.log(`${insertedCount} services insérés avec succès sur ${allServices.length} tentatives.`);
-  
+  console.log(
+    `${insertedCount} services insérés avec succès sur ${allServices.length} tentatives.`
+  );
+
   // Appeler la fonction seedQuestions
   await seedQuestions();
 }
@@ -827,4 +2183,4 @@ main()
   })
   .finally(async () => {
     await prisma.$disconnect();
-  }); 
+  });

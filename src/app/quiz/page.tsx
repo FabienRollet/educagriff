@@ -98,7 +98,11 @@ export default function Quiz() {
         }
 
         // Vérifier si les nextQuestionId sont valides
-        const invalidNextIds = [];
+        const invalidNextIds: Array<{
+          questionId: number;
+          optionId: number;
+          invalidNextId: number | null;
+        }> = [];
         data.forEach((q: Question) => {
           q.options.forEach((option) => {
             if (
@@ -402,14 +406,13 @@ export default function Quiz() {
               >
                 Résultat
               </motion.h2>
-              <motion.p
+              <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 0.3 }}
-                className="text-xl"
-              >
-                {result}
-              </motion.p>
+                className="text-left text-lg leading-relaxed"
+                dangerouslySetInnerHTML={{ __html: result }}
+              />
               <motion.button
                 variants={buttonVariants}
                 initial="initial"

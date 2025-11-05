@@ -22,4 +22,9 @@ export default {
     nextui(),
     daisyui
   ],
+  safelist: [
+    'bg-white', 'text-gray-800', 'bg-orange-100', 'border-gray-700',
+    'rounded-2xl', 'shadow-lg', 'text-2xl', 'font-bold', 'p-4',
+    'px-6', 'py-2', 'overflow-hidden', 'transition-colors', 'duration-300'
+  ]
 } satisfies Config;
