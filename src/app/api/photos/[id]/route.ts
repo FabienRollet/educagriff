@@ -6,10 +6,10 @@ import { join } from 'path';
 // DELETE /api/photos/[id]
 export async function DELETE(
   request: Request,
-  { params }: { params: { id: string } }
+  context: { params: { id: string } }
 ) {
   try {
-    const id = parseInt(params.id);
+    const id = parseInt(context.params.id);
     if (isNaN(id)) {
       return NextResponse.json(
         { error: 'ID invalide' },
